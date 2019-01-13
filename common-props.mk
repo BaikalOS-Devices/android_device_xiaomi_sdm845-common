@@ -70,7 +70,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.report_codec=1 \
     ril.subscription.types=NV,RUIM \
     ro.telephony.default_network=22,22 \
-    telephony.lteOnCdmaDevice=1
+    telephony.lteOnCdmaDevice=1 \
+    persist.vendor.qti.pie.telephony=1
 
 # SSR
 PRODUCT_PROPERTY_OVERRIDES += \

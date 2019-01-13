@@ -14,7 +14,7 @@ $(call inherit-product-if-exists, vendor/xiaomi/sdm845-common/sdm845-common-vend
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-custom
 
 # Properties
 -include $(LOCAL_PATH)/common-props.mk
@@ -38,10 +38,6 @@ PRODUCT_PACKAGES += \
 # Common init scripts
 PRODUCT_PACKAGES += \
     init.qcom.rc
-
-# Device-specific settings
-PRODUCT_PACKAGES += \
-    XiaomiParts
 
 # Display
 PRODUCT_PACKAGES += \
@@ -117,3 +113,18 @@ PRODUCT_PACKAGES += \
 # VNDK-SP
 PRODUCT_PACKAGES += \
     vndk-sp
+
+# Healthd
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-service \
+
+#PRODUCT_COPY_FILES += \
+#    $(OUT_DIR)/$(TARGET_COPY_OUT_VENDOR)/bin/hw/android.hardware.health@2.0-service:system/bin/hw/android.hardware.health@2.0-service
+
+# Device-specific settings
+PRODUCT_PACKAGES += \
+    BaikalParts
+
+# Device-specific settings
+PRODUCT_PACKAGES += \
+    BaikalDoze
