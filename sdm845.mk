@@ -128,3 +128,8 @@ PRODUCT_PACKAGES += \
 # Device-specific settings
 PRODUCT_PACKAGES += \
     BaikalDoze
+
+# Notch overlay
+PRODUCT_PACKAGES += \
+    NoCutoutOverlay
+
