@@ -133,3 +133,5 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     NoCutoutOverlay
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/factory.prop:root/factory/factory.prop
