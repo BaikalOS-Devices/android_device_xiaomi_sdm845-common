@@ -129,5 +129,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     BaikalDoze
 
+# WFD
+PRODUCT_PACKAGES += \
+    libnl \
+    libwfdaac
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/factory.prop:root/factory/factory.prop
