@@ -16,11 +16,41 @@
 -->
 <resources>
     <!-- App -->
+    <string name="app_name">Extras</string>
+    <string name="advanced_settings">Avanzato</string>
     <!-- Ambient display -->
+    <string name="display_title">Schermo</string>
+    <string name="device_doze_title">Display Ambient</string>
     <!-- Battery -->
+    <string name="battery_settings_title">Batteria</string>
+    <string name="qc_title">Carica rapida</string>
+    <string name="qc_summary">Attivare o disattivare le impostazioni di carica rapida</string>
     <!-- Camera -->
+    <string name="camera_pref_title">Fotocamera</string>
+    <string name="camera_focus_fix_title">Fix Autofocus</string>
+    <string name="camera_focus_fix_summary">Per i dispositivi con problema di messa a fuoco automatica</string>
     <!-- Kcal -->
+    <string name="kcal_title">Colore Display</string>
+    <string name="kcal_summary">Calibrazione Colore tramite KCAL</string>
+    <string name="kcal_enabled_title">Abilita KCAL</string>
+    <string name="kcal_enabled_summary">Attiva la calibrazione del display usando KCAL</string>
+    <string name="kcal_red">Rosso</string>
+    <string name="kcal_green">Verde</string>
+    <string name="kcal_blue">Blu</string>
+    <string name="kcal_saturation">Saturazione</string>
+    <string name="kcal_contrast">Constrasto</string>
+    <string name="menu_reset">Reset</string>
+    <string name="kcal_color_temp">Temperatura Colore (K)</string>
     <!-- Volte -->
+    <string name="volte_pref_title">Hack VoLTE</string>
+    <string name="volte_fix_title">Abilitare VoLTE</string>
+    <string name="volte_fix_summary">Richiede il riavvio, Reimposta Impostazioni sim dopo ogni riavvio</string>
     <!-- HALL Sensor -->
     <!-- FB Boost -->
+    <string name="qfp_wup_title">Risveglia tramite sensore impronte</string>
+    <string name="qfp_wup_summary">Risveglia tramite sensore immediatamente prima dell\'autenticazione. Necessario riavviare il computer!</string>
+    <string name="qfp_enable_title">Abilita Impronta Digitale</string>
+    <string name="qfp_enable_summary">Abilita impronta digitale</string>
+    <string name="hw_0d_disable_title">Disabilita tasti HW</string>
+    <string name="hw_0d_disable_summary">Disabilita tasti HW</string>
 </resources>

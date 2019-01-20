@@ -16,11 +16,45 @@
 -->
 <resources>
     <!-- App -->
+    <string name="app_name">Le Extras</string>
+    <string name="advanced_settings">Настройки устройства</string>
     <!-- Ambient display -->
+    <string name="display_title">Экран</string>
+    <string name="device_doze_title">Индикация событий (doze)</string>
     <!-- Battery -->
+    <string name="battery_settings_title">Батарейка</string>
+    <string name="qc_title">Быстрая зарядка</string>
+    <string name="qc_summary">Включить/отключить быструю зарядку</string>
     <!-- Camera -->
+    <string name="camera_pref_title">Камера</string>
+    <string name="camera_focus_fix_title">Фикс автофокуса</string>
+    <string name="camera_focus_fix_summary">Для устройств с проблемой с автофокусом</string>
     <!-- Kcal -->
+    <string name="kcal_title">Калибровка дисплея</string>
+    <string name="kcal_summary">Калибровка цветов дисплея с помощью KCAL</string>
+    <string name="kcal_enabled_title">Включить KCAL</string>
+    <string name="kcal_enabled_summary">Включить калибровку дисплея с использованием KCAL</string>
+    <string name="kcal_red">Красный</string>
+    <string name="kcal_green">Зеленый</string>
+    <string name="kcal_blue">Синий</string>
+    <string name="kcal_saturation">Насыщенность</string>
+    <string name="kcal_contrast">Контраст</string>
+    <string name="menu_reset">Сбросить</string>
+    <string name="kcal_color_temp">Температура цвета (K)</string>
     <!-- Volte -->
+    <string name="volte_pref_title">VoLTE Хак</string>
+    <string name="volte_fix_title">Включить VoLTE</string>
+    <string name="volte_fix_summary">Требуется перезагрузка, настройки симкарт будут слетать при каждой загрузке</string>
     <!-- HALL Sensor -->
+    <string name="hall_srv_title">Датчик Холла</string>
+    <string name="hall_srv_summary">Включить драйвер датчика Холла</string>
     <!-- FB Boost -->
+    <string name="fb_boost_title">Буст при отрисовке</string>
+    <string name="fb_boost_summary">Повышать частоту CPU и шины GPU при отрисовке кадра. Увеличивает расход батареи</string>
+    <string name="qfp_wup_title">Пробуждать по СОП</string>
+    <string name="qfp_wup_summary">Пробуждать телефон по датчику отпечатка сразу по детектированию пальца. Требуется перезагрузка.</string>
+    <string name="qfp_enable_title">Включить СОП</string>
+    <string name="qfp_enable_summary">Включить сканер отпечатка пальца</string>
+    <string name="hw_0d_disable_title">Отключить Кнопки</string>
+    <string name="hw_0d_disable_summary">Отключить аппаратные кнопки</string>
 </resources>
