@@ -61,6 +61,8 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_DIRAC_SOUND_ENHANCER = "dirac_enhancer";
     private static final String KEY_DIRAC_HEADSET_TYPE = "dirac_headsets";
     private static final String KEY_DIRAC_MUSIC_MODE = "dirac_mode";
+    private static final String KEY_DIRAC_PRESET = "dirac_preset";
+
 
     private static final String KEY_MISOUND_SOUND_ENHANCER = "mi_sound_enhancer";
     private static final String KEY_MISOUND_HEADSET_TYPE = "mi_sound_headsets";
@@ -72,7 +74,7 @@ public class DeviceSettings extends PreferenceFragment implements
 
 
     private TwoStatePreference mDiracEnableDisable;
-    private ListPreference mDiracHeadsetType, mDiracMusicMode;
+    private ListPreference mDiracHeadsetType, mDiracMusicMode, mDiracPreset;
 
     private TwoStatePreference mMiSoundEnableDisable;
     private ListPreference mMiSoundHeadsetType, mMiSoundMusicMode;
@@ -122,6 +124,8 @@ public class DeviceSettings extends PreferenceFragment implements
         });
         mDiracHeadsetType = (ListPreference) findPreference(KEY_DIRAC_HEADSET_TYPE);
         mDiracMusicMode = (ListPreference) findPreference(KEY_DIRAC_MUSIC_MODE);
+        mDiracPreset = (ListPreference) findPreference(KEY_DIRAC_PRESET);
+
 
 
         if (DiracAudioEnhancerService.du != null && DiracAudioEnhancerService.du.hasInitialized()) {
@@ -135,14 +139,25 @@ public class DeviceSettings extends PreferenceFragment implements
           }
         });
 
+        /*
         mDiracMusicMode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
           public boolean onPreferenceChange(Preference preference, Object newValue) {
             int val = Integer.parseInt(newValue.toString());
             DiracAudioEnhancerService.du.setMode(mContext, val);
             return true;
           }
-        });
+        });*/
 
+        if (DiracAudioEnhancerService.du != null && DiracAudioEnhancerService.du.hasInitialized()) {
+            mDiracPreset.setValue(DiracAudioEnhancerService.du.getLevel());
+        }
+
+        mDiracPreset.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            DiracAudioEnhancerService.du.setLevel(String.valueOf(newValue));
+            return true;
+          }
+        });
 
         /*
         if( MiSoundAudioEnhancerService.du == null ) {

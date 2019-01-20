@@ -89,5 +89,22 @@ public class DiracAudioEnhancerUtils
     mAudEnhncr.setMode(paramInt);
   }
 
+    protected void setLevel(String preset) {
+        String[] level = preset.split("\\s*,\\s*");
+        for (int band = 0; band <= level.length - 1; band++) {
+            mAudEnhncr.setLevel(band, Float.valueOf(level[band]));
+        }
+    }
+	
+	
+    protected String getLevel() {
+        String selected = "";
+        for (int band = 0; band <= 6; band++) {
+            int temp = (int) mAudEnhncr.getLevel(band);
+            selected += String.valueOf(temp);
+            if (band != 6) selected += ",";
+        }
+        return selected;
+    }
 }
 
