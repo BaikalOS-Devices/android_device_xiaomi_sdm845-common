@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.SharedPreferences;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.support.v14.preference.PreferenceFragment;
@@ -57,26 +58,36 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String SYSTEM_PROPERTY_QFP_ENABLE = "persist.qfp_enable";
     private static final String SYSTEM_PROPERTY_HW_0D_DISABLE = "persist.hw.0d_disable";
 
+    private static final String KEY_DIRAC_SOUND_ENHANCER = "dirac_enhancer";
+    private static final String KEY_DIRAC_HEADSET_TYPE = "dirac_headsets";
+    private static final String KEY_DIRAC_MUSIC_MODE = "dirac_mode";
+
+    private static final String KEY_MISOUND_SOUND_ENHANCER = "mi_sound_enhancer";
+    private static final String KEY_MISOUND_HEADSET_TYPE = "mi_sound_headsets";
+    private static final String KEY_MISOUND_MUSIC_MODE = "mi_sound_mode";
+
+
     final String KEY_DEVICE_DOZE = "device_doze";
     final String KEY_DEVICE_DOZE_PACKAGE_NAME = "org.lineageos.settings.doze";
 
 
+    private TwoStatePreference mDiracEnableDisable;
+    private ListPreference mDiracHeadsetType, mDiracMusicMode;
+
+    private TwoStatePreference mMiSoundEnableDisable;
+    private ListPreference mMiSoundHeadsetType, mMiSoundMusicMode;
 
     private Preference mKcalPref;
-    private SwitchPreference mCameraFocusFix;
-    private SwitchPreference mEnableQC;
-    private SwitchPreference mVolteFix;
-    private SwitchPreference mHallSrv;
-    private SwitchPreference mFbBoost;
-    private SwitchPreference mQfpWup;
-    private SwitchPreference mQfpEnable;
-    private SwitchPreference mHw0DDisable;
 
-    private PreferenceCategory cameraCategory;
+    private Context mContext;
+
+
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.main, rootKey);
+
+        mContext = getActivity();
 
         mKcalPref = findPreference("kcal");
         if(  mKcalPref != null ) {
@@ -90,72 +101,87 @@ public class DeviceSettings extends PreferenceFragment implements
             });
         }
 
-        mEnableQC = (SwitchPreference) findPreference(QC_SYSTEM_PROPERTY);
-        if( mEnableQC != null ) {
-            mEnableQC.setChecked(SystemProperties.getBoolean(QC_SYSTEM_PROPERTY, false));
-            mEnableQC.setOnPreferenceChangeListener(this);
+
+        mDiracEnableDisable = (TwoStatePreference) findPreference(KEY_DIRAC_SOUND_ENHANCER);
+
+
+        if (DiracAudioEnhancerService.du == null ) {
+            mContext.startService(new Intent(mContext, DiracAudioEnhancerService.class));
         }
 
-        PreferenceCategory cameraCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_CAMERA);
-        if( cameraCategory != null ) { 
-            if (isZl1()) {
-                getPreferenceScreen().removePreference(cameraCategory);
-            } else {
-                mCameraFocusFix = (SwitchPreference) findPreference(SYSTEM_PROPERTY_CAMERA_FOCUS_FIX);
-                if( mCameraFocusFix != null ) {
-                    mCameraFocusFix.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_CAMERA_FOCUS_FIX, false));
-                    mCameraFocusFix.setOnPreferenceChangeListener(this);
-                }
+        if (DiracAudioEnhancerService.du != null && DiracAudioEnhancerService.du.hasInitialized()) {
+          mDiracEnableDisable.setChecked(DiracAudioEnhancerService.du.isEnabled(mContext) ? true:false);
+        }
+        mDiracEnableDisable.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            if(((TwoStatePreference) preference).isChecked() != (Boolean) newValue) {
+              DiracAudioEnhancerService.du.setEnabled(mContext, (Boolean) newValue ? true:false);
             }
-        }
+            return true;
+          }
+        });
+        mDiracHeadsetType = (ListPreference) findPreference(KEY_DIRAC_HEADSET_TYPE);
+        mDiracMusicMode = (ListPreference) findPreference(KEY_DIRAC_MUSIC_MODE);
 
-        mVolteFix = (SwitchPreference) findPreference(SYSTEM_PROPERTY_VOLTE_FIX);
-        if( mVolteFix != null ) {
-            mVolteFix.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_VOLTE_FIX, false));
-            mVolteFix.setOnPreferenceChangeListener(this);
-        }
 
-        mHallSrv = (SwitchPreference) findPreference(SYSTEM_PROPERTY_HALL_SRV);
-        if( mHallSrv != null ) {
-            mHallSrv.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_HALL_SRV, false));
-            mHallSrv.setOnPreferenceChangeListener(this);
+        if (DiracAudioEnhancerService.du != null && DiracAudioEnhancerService.du.hasInitialized()) {
+            mDiracHeadsetType.setValue(Integer.toString(DiracAudioEnhancerService.du.getHeadsetType(mContext)));
         }
+        mDiracHeadsetType.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            int val = Integer.parseInt(newValue.toString());
+            DiracAudioEnhancerService.du.setHeadsetType(mContext, val);
+            return true;
+          }
+        });
 
-        mQfpWup = (SwitchPreference) findPreference(SYSTEM_PROPERTY_PS_FB_BOOST);
-        if( mQfpWup != null ) {
-            mQfpWup.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_PS_FB_BOOST, false));
-            mQfpWup.setOnPreferenceChangeListener(this);
+        mDiracMusicMode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            int val = Integer.parseInt(newValue.toString());
+            DiracAudioEnhancerService.du.setMode(mContext, val);
+            return true;
+          }
+        });
+
+
+        /*
+        if( MiSoundAudioEnhancerService.du == null ) {
+            mContext.startService(new Intent(mContext, MiSoundAudioEnhancerService.class));
         }
-
-        mQfpWup = (SwitchPreference) findPreference(SYSTEM_PROPERTY_QFP_WUP);
-        if( mQfpWup != null ) {
-            if (isZl1()) {
-                getPreferenceScreen().removePreference(mQfpWup);
-            } else {
-                mQfpWup.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_QFP_WUP, false));
-                mQfpWup.setOnPreferenceChangeListener(this);
+        mMiSoundEnableDisable = (TwoStatePreference) findPreference(KEY_MISOUND_SOUND_ENHANCER);
+        if (MiSoundAudioEnhancerService.du != null && MiSoundAudioEnhancerService.du.hasInitialized()) {
+          mMiSoundEnableDisable.setChecked(MiSoundAudioEnhancerService.du.isEnabled(mContext) ? true:false);
+        }
+        mMiSoundEnableDisable.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            if(((TwoStatePreference) preference).isChecked() != (Boolean) newValue) {
+              MiSoundAudioEnhancerService.du.setEnabled(mContext, (Boolean) newValue ? true:false);
             }
+            return true;
+          }
+        });
+        mMiSoundHeadsetType = (ListPreference) findPreference(KEY_MISOUND_HEADSET_TYPE);
+        mMiSoundMusicMode = (ListPreference) findPreference(KEY_MISOUND_MUSIC_MODE);
+
+        if (MiSoundAudioEnhancerService.du != null && DiracAudioEnhancerService.du.hasInitialized()) {
+          mMiSoundHeadsetType.setValue(Integer.toString(MiSoundAudioEnhancerService.du.getHeadsetType(mContext)));
         }
+        mMiSoundHeadsetType.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            int val = Integer.parseInt(newValue.toString());
+            MiSoundAudioEnhancerService.du.setHeadsetType(mContext, val);
+            return true;
+          }
+        });
 
-        mQfpEnable = (SwitchPreference) findPreference(SYSTEM_PROPERTY_QFP_ENABLE);
-        if( mQfpEnable != null ) {
-            if (isZl1()) {
-                getPreferenceScreen().removePreference(mQfpWup);
-            } else {
-                mQfpEnable.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_QFP_ENABLE, false));
-                mQfpEnable.setOnPreferenceChangeListener(this);
-            }
-        }
-
-
-
-
-        mHw0DDisable = (SwitchPreference) findPreference(SYSTEM_PROPERTY_HW_0D_DISABLE);
-        if( mHw0DDisable != null ) {
-            mHw0DDisable.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_HW_0D_DISABLE, false));
-            mHw0DDisable.setOnPreferenceChangeListener(this);
-        }
-
+        mMiSoundMusicMode.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+          public boolean onPreferenceChange(Preference preference, Object newValue) {
+            int val = Integer.parseInt(newValue.toString());
+            MiSoundAudioEnhancerService.du.setMode(mContext, val);
+            return true;
+          }
+        });
+        */
         if (!isAppInstalled(KEY_DEVICE_DOZE_PACKAGE_NAME)) {
             PreferenceCategory displayCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_DISPLAY);
             displayCategory.removePreference(findPreference(KEY_DEVICE_DOZE));
@@ -187,14 +213,6 @@ public class DeviceSettings extends PreferenceFragment implements
         }
 
         return false;
-    }
-
-    private boolean isZl1() {
-        if(SystemProperties.get("ro.product.vendor.device").equals("zl1")) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     private void setEnable(String key, boolean value) {

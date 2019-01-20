@@ -15,7 +15,7 @@
 -->
 <resources>
     <!-- App -->
-    <string name="app_name">Le Extras</string>
+    <string name="app_name">BaikalOS Device Extras</string>
     <string name="advanced_settings">Настройки устройства</string>
 
     <!-- Ambient display -->

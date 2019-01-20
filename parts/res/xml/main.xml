@@ -84,4 +84,55 @@
         android:summary="@string/hw_0d_disable_summary" /-->
 
 
+
+    private static final String KEY_DIRAC_SOUND_ENHANCER = "dirac_enhancer";
+    private static final String KEY_DIRAC_HEADSET_TYPE = "dirac_headsets";
+    private static final String KEY_DIRAC_MUSIC_MODE = "dirac_mode";
+
+    private static final String KEY_MISOUND_SOUND_ENHANCER = "mi_sound_enhancer";
+    private static final String KEY_MISOUND_HEADSET_TYPE = "mi_sound_headsets";
+    private static final String KEY_MISOUND_MUSIC_MODE = "mi_sound_mode";
+
+
+    <PreferenceCategory
+        android:key="dirac_settings"
+        android:title="@string/dirac_settings" >
+
+    	<SwitchPreference
+    	    android:key="dirac_enhancer"
+    	    android:title="@string/dirac_enhancer"
+    	    android:persistent="false" />
+        <ListPreference
+    	    android:key="dirac_headsets"
+    	    android:title="@string/dirac_headsets"
+    	    android:entries="@array/listentries"
+    	    android:entryValues="@array/listvalues" />
+        <ListPreference
+    	    android:key="dirac_mode"
+    	    android:title="@string/dirac_mode"
+    	    android:entries="@array/dirac_mode_entries"
+    	    android:entryValues="@array/dirac_mode_values"/>
+
+    </PreferenceCategory>
+
+    <!-- PreferenceCategory
+        android:key="misound_settings"
+        android:title="@string/misound_settings" >
+
+    	<SwitchPreference
+    	    android:key="mi_sound_enhancer"
+    	    android:title="@string/mi_sound_enhancer"
+    	    android:persistent="false" />
+        <ListPreference
+    	    android:key="mi_sound_headsets"
+    	    android:title="@string/mi_sound_headsets"
+    	    android:entries="@array/listentries"
+    	    android:entryValues="@array/listvalues" />
+        <ListPreference
+    	    android:key="mi_sound_mode"
+    	    android:title="@string/mi_sound_mode"
+    	    android:entries="@array/dirac_mode_entries"
+    	    android:entryValues="@array/dirac_mode_values"/>
+
+    </PreferenceCategory -->
 </PreferenceScreen>

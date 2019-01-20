@@ -30,6 +30,7 @@
         <activity-alias
             android:name="org.omnirom.device.DeviceSettings"
             android:exported="true"
+            android:persistent="true"
             android:label="@string/advanced_settings"
             android:targetActivity="DeviceSettingsActivity" >
             <intent-filter>
@@ -38,6 +39,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity-alias>
+
         <activity
             android:name="org.omnirom.device.DisplayCalibration"
             android:exported="true"
@@ -46,12 +48,38 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+            </intent-filter>
         </activity>
         <receiver android:name="org.omnirom.device.Startup" >
             <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <service android:enabled="true"
+          android:directBootAware="true"
+          android:exported="true"
+          android:name="org.omnirom.device.MiSoundAudioEnhancerService">
+        </service>
+
+        <service android:enabled="true"
+          android:directBootAware="true"
+          android:exported="true"
+          android:name="org.omnirom.device.DiracAudioEnhancerService">
+        </service>
+
+        <receiver android:name="org.omnirom.device.DiracBootReceiver" android:enabled="true">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="org.omnirom.device.MiSoundBootReceiver" android:enabled="true">
+            <intent-filter android:priority="2147483646">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+
     </application>
 </manifest>
