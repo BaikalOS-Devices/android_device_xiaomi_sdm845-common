@@ -67,4 +67,15 @@
     <string name="hw_0d_disable_title">Disable HW Keys</string>
     <string name="hw_0d_disable_summary">Disable HW Keys</string>
 
+    <string name="sound_settings">Sound settings</string>
+
+    <string name="snd_compander_title">Disable Compander</string>
+    <string name="snd_compander_summary">Disable Compander for wired headphones for better sound quality</string>
+    <string name="snd_headphone_title">Headphone Gain</string>
+    <string name="snd_headphone_summary">+8 dB</string>
+    <string name="snd_earpiece_title">Earpiece Gain</string>
+    <string name="snd_earpiece_summary">+8 dB</string>
+    <string name="snd_mic_title">Mic Gain</string>
+    <string name="snd_mic_summary">+8 dB</string>
+
 </resources>

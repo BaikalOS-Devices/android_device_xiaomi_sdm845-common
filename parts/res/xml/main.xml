@@ -83,17 +83,6 @@
         android:title="@string/hw_0d_disable_title"
         android:summary="@string/hw_0d_disable_summary" /-->
 
-
-
-    private static final String KEY_DIRAC_SOUND_ENHANCER = "dirac_enhancer";
-    private static final String KEY_DIRAC_HEADSET_TYPE = "dirac_headsets";
-    private static final String KEY_DIRAC_MUSIC_MODE = "dirac_mode";
-
-    private static final String KEY_MISOUND_SOUND_ENHANCER = "mi_sound_enhancer";
-    private static final String KEY_MISOUND_HEADSET_TYPE = "mi_sound_headsets";
-    private static final String KEY_MISOUND_MUSIC_MODE = "mi_sound_mode";
-
-
     <PreferenceCategory
         android:key="dirac_settings"
         android:title="@string/dirac_settings" >
@@ -124,6 +113,37 @@
     	    android:entryValues="@array/dirac_mode_values"/ -->
 
     </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="sound_settings"
+        android:title="@string/sound_settings" >
+
+
+    	<SwitchPreference
+    	    android:key="persist.baikal.compander"
+    	    android:title="@string/snd_compander_title"
+    	    android:summary="@string/snd_compander_summary"
+    	    android:persistent="false" />
+    	<SwitchPreference
+    	    android:key="persist.baikal.headphone_gain"
+    	    android:title="@string/snd_headphone_title"
+    	    android:summary="@string/snd_headphone_summary"
+    	    android:persistent="false" />
+    	<SwitchPreference
+    	    android:key="persist.baikal.earpiece_gain"
+    	    android:title="@string/snd_earpiece_title"
+    	    android:summary="@string/snd_earpiece_summary"
+    	    android:persistent="false" />
+    	<SwitchPreference
+    	    android:key="persist.baikal.mic_gain"
+    	    android:title="@string/snd_mic_title"
+    	    android:summary="@string/snd_mic_summary"
+    	    android:persistent="false" />
+
+
+    </PreferenceCategory>
+
 
     <!-- PreferenceCategory
         android:key="misound_settings"

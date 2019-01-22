@@ -7,21 +7,20 @@ on init
     mount none /system/lib64/soundfx/libvolumelistener.so /vendor/lib64/soundfx/libvolumelistener.so bind
     mount none /system/lib/soundfx/libvolumelistener.so /vendor/lib/soundfx/libvolumelistener.so bind
     mount none /system/bin/hw/android.hardware.health@2.0-service /vendor/bin/hw/android.hardware.health@2.0-service bind
-
     # Boot time FS tune
-    write /sys/block/sda/queue/iostats 0
-    write /sys/block/sda/queue/scheduler cfq
-    write /sys/block/sda/queue/iosched/slice_idle 0
-    write /sys/block/sda/queue/read_ahead_kb 2048
-    write /sys/block/sda/queue/nr_requests 256
-    write /sys/block/sdf/queue/iostats 0
-    write /sys/block/sdf/queue/scheduler cfq
-    write /sys/block/sdf/queue/iosched/slice_idle 0
-    write /sys/block/sdf/queue/read_ahead_kb 2048
-    write /sys/block/sdf/queue/nr_requests 256
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
-    write /sys/block/dm-2/queue/read_ahead_kb 2048
+#    write /sys/block/sda/queue/iostats 0
+#    write /sys/block/sda/queue/scheduler cfq
+#    write /sys/block/sda/queue/iosched/slice_idle 0
+#    write /sys/block/sda/queue/read_ahead_kb 2048
+#    write /sys/block/sda/queue/nr_requests 256
+#    write /sys/block/sdf/queue/iostats 0
+#    write /sys/block/sdf/queue/scheduler cfq
+#    write /sys/block/sdf/queue/iosched/slice_idle 0
+#    write /sys/block/sdf/queue/read_ahead_kb 2048
+#    write /sys/block/sdf/queue/nr_requests 256
+#    write /sys/block/dm-0/queue/read_ahead_kb 2048
+#    write /sys/block/dm-1/queue/read_ahead_kb 2048
+#    write /sys/block/dm-2/queue/read_ahead_kb 2048
 
 on boot
     chown system system /proc/touchpanel/wake_gesture
@@ -30,6 +29,33 @@ on boot
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param
     chmod 0660 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/hbm_status
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+    #write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 1
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+    write /sys/block/sda/queue/scheduler maple
+    write /sys/block/sdf/queue/scheduler maple
+    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
+    write /sys/module/adreno_idler/parameters/adreno_idler_active Y
+    write /sys/module/msm_performance/parameters/touchboost 0
+    write /proc/sys/vm/swappiness 40
+    write /proc/sys/vm/vfs_cache_pressure 100
+    #write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    #write /sys/module/sync/parameters/fsync_enabled 0
+
+    write /sys/block/sda/queue/read_ahead_kb 256
+    write /sys/block/sdf/queue/read_ahead_kb 256
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 0
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 0
+    # Enable iowait boost to ramp up the CPU on repeated iowait wakeups
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/iowait_boost_enable 1
 
 on late-fs
     # Boot time FS tune
@@ -55,13 +81,41 @@ on property:sys.boot_completed=1
     # Runtime FS tuning: as we have init boottime setting and kernel patch setting
     # default readahead to 2048KB. We should adjust the setting upon boot_complete
     # for runtime performance
-    write /sys/block/sda/queue/read_ahead_kb 128
-    write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/sda/queue/iostats 1
-    write /sys/block/sdf/queue/read_ahead_kb 128
-    write /sys/block/sdf/queue/nr_requests 128
-    write /sys/block/sdf/queue/iostats 1
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/dm-1/queue/read_ahead_kb 128
-    write /sys/block/dm-2/queue/read_ahead_kb 128
-    write /sys/block/dm-3/queue/read_ahead_kb 128
+    #write /sys/block/sda/queue/read_ahead_kb 128
+#    write /sys/block/sda/queue/nr_requests 128
+#    write /sys/block/sda/queue/iostats 1
+#    write /sys/block/sdf/queue/read_ahead_kb 128
+#    write /sys/block/sdf/queue/nr_requests 128
+#    write /sys/block/sdf/queue/iostats 1
+#    write /sys/block/dm-0/queue/read_ahead_kb 128
+#    write /sys/block/dm-1/queue/read_ahead_kb 128
+#    write /sys/block/dm-2/queue/read_ahead_kb 128
+#    write /sys/block/dm-3/queue/read_ahead_kb 128
+
+on property:persist.baikal.compander=1
+    write /sys/kernel/sound_control/comp "1 0"
+    write /sys/kernel/sound_control/comp "2 0"
+
+on property:persist.baikal.compander=0
+    write /sys/kernel/sound_control/comp "1 -1"
+    write /sys/kernel/sound_control/comp "2 -1"
+
+on property:persist.baikal.mic_gain=0
+    write /sys/kernel/sound_control/mic_gain 0
+
+on property:persist.baikal.mic_gain=1
+    write /sys/kernel/sound_control/mic_gain 8
+
+on property:persist.baikal.earpiece_gain=0
+    write /sys/kernel/sound_control/earpiece_gain 0
+
+on property:persist.baikal.earpiece_gain=1
+    write /sys/kernel/sound_control/earpiece_gain 8
+
+on property:persist.baikal.hp_gain=0
+    write /sys/kernel/sound_control/headphone_gain "0 0"
+
+on property:persist.baikal.hp_gain=1
+    write /sys/kernel/sound_control/headphone_gain "8 8"
+
+
