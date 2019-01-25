@@ -90,3 +90,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0
+
+# BaikalService 
+PRODUCT_PROPERTY_OVERRIDES += \
+    baikal.eng.perf=1 \
+    baikal.eng.therm=1
+
+

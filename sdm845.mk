@@ -139,3 +139,9 @@ PRODUCT_BOOT_JARS += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/factory.prop:root/factory/factory.prop
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.rc:system/etc/init/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.performance.rc:system/etc/init/init.performance.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.profiles.rc:system/etc/init/init.profiles.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.thermal.rc:system/etc/init/init.thermal.rc

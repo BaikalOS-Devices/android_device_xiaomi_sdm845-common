@@ -57,6 +57,18 @@ on boot
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/iowait_boost_enable 1
 
+    chown system system /sys/kernel/sound_control/mic_gain
+    chmod 0660 /sys/kernel/sound_control/mic_gain
+
+    chown system system /sys/kernel/sound_control/earpiece_gain
+    chmod 0660 /sys/kernel/sound_control/earpiece_gain
+
+    chown system system /sys/kernel/sound_control/headphone_gain
+    chmod 0660 /sys/kernel/sound_control/headphone_gain
+
+    chown system system /sys/kernel/sound_control/comp
+    chmod 0660 /sys/kernel/sound_control/comp
+
 on late-fs
     # Boot time FS tune
     write /sys/block/dm-3/queue/read_ahead_kb 2048
@@ -112,10 +124,10 @@ on property:persist.baikal.earpiece_gain=0
 on property:persist.baikal.earpiece_gain=1
     write /sys/kernel/sound_control/earpiece_gain 8
 
-on property:persist.baikal.hp_gain=0
+on property:persist.baikal.headphone_gain=0
     write /sys/kernel/sound_control/headphone_gain "0 0"
 
-on property:persist.baikal.hp_gain=1
+on property:persist.baikal.headphone_gain=1
     write /sys/kernel/sound_control/headphone_gain "8 8"
 
 
