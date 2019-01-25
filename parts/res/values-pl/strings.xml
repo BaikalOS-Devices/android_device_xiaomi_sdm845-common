@@ -16,7 +16,6 @@
 -->
 <resources>
     <!-- App -->
-    <string name="app_name">Opcje LE</string>
     <string name="advanced_settings">Zaawansowane</string>
     <!-- Ambient display -->
     <string name="display_title">Wyświetlacz</string>

@@ -16,7 +16,7 @@
 -->
 <resources>
     <!-- App -->
-    <string name="app_name">Le Extras</string>
+    <string name="app_name">Расширения BaikalOS</string>
     <string name="advanced_settings">Настройки устройства</string>
     <!-- Ambient display -->
     <string name="display_title">Экран</string>
@@ -57,4 +57,10 @@
     <string name="qfp_enable_summary">Включить сканер отпечатка пальца</string>
     <string name="hw_0d_disable_title">Отключить Кнопки</string>
     <string name="hw_0d_disable_summary">Отключить аппаратные кнопки</string>
+    <string name="sound_settings">Настройки звука</string>
+    <string name="snd_compander_title">Отключить компандер</string>
+    <string name="snd_compander_summary">Отключить компандер для проводных наушников для лучшего качества звучания</string>
+    <string name="snd_headphone_title">Усиление наушников</string>
+    <string name="snd_earpiece_title">Усиление разговорного динамика</string>
+    <string name="snd_mic_title">Усиление микрофона</string>
 </resources>

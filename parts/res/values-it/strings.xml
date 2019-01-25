@@ -16,7 +16,6 @@
 -->
 <resources>
     <!-- App -->
-    <string name="app_name">Extras</string>
     <string name="advanced_settings">Avanzato</string>
     <!-- Ambient display -->
     <string name="display_title">Schermo</string>

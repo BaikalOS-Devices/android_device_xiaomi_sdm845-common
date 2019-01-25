@@ -16,11 +16,36 @@
 -->
 <resources>
     <!-- App -->
+    <string name="advanced_settings">Avanzado</string>
     <!-- Ambient display -->
+    <string name="display_title">Pantalla</string>
+    <string name="device_doze_title">Pantalla ambiente</string>
     <!-- Battery -->
+    <string name="battery_settings_title">Batería</string>
+    <string name="qc_title">Carga rápida</string>
+    <string name="qc_summary">Activar/desactivar ajustes de carga rápida</string>
     <!-- Camera -->
+    <string name="camera_pref_title">Cámara</string>
+    <string name="camera_focus_fix_title">Corrección de enfoque automático</string>
+    <string name="camera_focus_fix_summary">Para dispositivos con problema de enfoque automático</string>
     <!-- Kcal -->
+    <string name="kcal_title">Color de la pantalla</string>
+    <string name="kcal_summary">Calibración de color de pantalla usando KCAL</string>
+    <string name="kcal_enabled_title">Activar KCAL</string>
+    <string name="kcal_enabled_summary">Encender la calibración de pantalla usando KCAL</string>
+    <string name="kcal_red">Rojo</string>
+    <string name="kcal_green">Verde</string>
+    <string name="kcal_blue">Azul</string>
+    <string name="kcal_saturation">Saturación</string>
+    <string name="kcal_contrast">Contraste</string>
+    <string name="menu_reset">Restablecer</string>
+    <string name="kcal_color_temp">Temperatura de color (K)</string>
     <!-- Volte -->
+    <string name="volte_pref_title">Hack de voLTE</string>
+    <string name="volte_fix_title">Activar VoLTE</string>
     <!-- HALL Sensor -->
     <!-- FB Boost -->
+    <string name="qfp_enable_summary">Activar huella digital</string>
+    <string name="hw_0d_disable_title">Desactivar las teclas físicas</string>
+    <string name="hw_0d_disable_summary">Desactivar las teclas físicas</string>
 </resources>
