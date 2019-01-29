@@ -90,19 +90,28 @@ on property:sys.boot_completed=1
     stop vendor.ipacm-diag
     stop vendor.ss_ramdump
 
-    # Runtime FS tuning: as we have init boottime setting and kernel patch setting
-    # default readahead to 2048KB. We should adjust the setting upon boot_complete
-    # for runtime performance
-    #write /sys/block/sda/queue/read_ahead_kb 128
-#    write /sys/block/sda/queue/nr_requests 128
-#    write /sys/block/sda/queue/iostats 1
-#    write /sys/block/sdf/queue/read_ahead_kb 128
-#    write /sys/block/sdf/queue/nr_requests 128
-#    write /sys/block/sdf/queue/iostats 1
-#    write /sys/block/dm-0/queue/read_ahead_kb 128
-#    write /sys/block/dm-1/queue/read_ahead_kb 128
-#    write /sys/block/dm-2/queue/read_ahead_kb 128
-#    write /sys/block/dm-3/queue/read_ahead_kb 128
+# Set the default IRQ affinity to the silver cluster.
+    write /proc/irq/default_smp_affinity f
+
+# Runtime fs tuning: as we have init boottime setting and kernel patch setting
+# default readahead to 2048KB. We should adjust the setting upon boot_complete
+# for runtime performance
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
+    write /sys/block/sda/queue/scheduler bfq
+
+    write /sys/block/sde/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/nr_requests 128
+    write /sys/block/sde/queue/iostats 1
+    write /sys/block/sde/queue/scheduler bfq
+
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-0/queue/nr_requests 128
+    write /sys/block/dm-0/queue/iostats 1
+    write /sys/block/dm-0/queue/scheduler bfq
+
+
 
 on property:persist.baikal.compander=1
     write /sys/kernel/sound_control/comp "1 0"
