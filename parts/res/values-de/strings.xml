@@ -16,11 +16,54 @@
 -->
 <resources>
     <!-- App -->
+    <string name="app_name">BaikalOS Geräte Extras</string>
+    <string name="advanced_settings">Erweitert</string>
     <!-- Ambient display -->
+    <string name="display_title">Display</string>
+    <string name="device_doze_title">Inaktivitätsdisplay</string>
     <!-- Battery -->
+    <string name="battery_settings_title">Akku</string>
+    <string name="qc_title">Quick Charge</string>
+    <string name="qc_summary">Aktivieren/Deaktivieren der Quickcharge Einstellungen</string>
     <!-- Camera -->
+    <string name="camera_pref_title">Kamera</string>
+    <string name="camera_focus_fix_title">Autofokus Fix</string>
+    <string name="camera_focus_fix_summary">Für Geräte mit Autofokus Problemen</string>
     <!-- Kcal -->
+    <string name="kcal_title">Displayfarbe</string>
+    <string name="kcal_summary">Display Farbkalibrierung mit KCAL</string>
+    <string name="kcal_enabled_title">KCAL aktivieren</string>
+    <string name="kcal_enabled_summary">Displaykalibrierung mit KCAL aktivieren</string>
+    <string name="kcal_red">Rot</string>
+    <string name="kcal_green">Grün</string>
+    <string name="kcal_blue">Blau</string>
+    <string name="kcal_saturation">Sättigung</string>
+    <string name="kcal_contrast">Kontrast</string>
+    <string name="menu_reset">Zurücksetzen</string>
+    <string name="kcal_color_temp">Farbtemperatur (K)</string>
     <!-- Volte -->
+    <string name="volte_pref_title">VoLTE Hack</string>
+    <string name="volte_fix_title">VoLTE aktivieren</string>
+    <string name="volte_fix_summary">Nach jedem Neustart müssen die SIM Einstellungen zurückgesetzt werden</string>
     <!-- HALL Sensor -->
+    <string name="hall_srv_title">HALL Sensor</string>
+    <string name="hall_srv_summary">HALL Sensor Treiber aktivieren</string>
     <!-- FB Boost -->
+    <string name="fb_boost_title">Beschleunigung bei Draw</string>
+    <string name="fb_boost_summary">CPU bei frame draw beschleunigen. Könnte Akkuverbrauch erhöhen während der Bildschirm eingeschaltet ist</string>
+    <string name="qfp_wup_title">Aufwecken durch Fingerabdrucksensor</string>
+    <string name="qfp_wup_summary">Direkt aufwecken wenn ein Finger erkannt wurde, benötigt reboot!</string>
+    <string name="qfp_enable_title">Fingerabdrucksensor aktivieren</string>
+    <string name="qfp_enable_summary">Fingerabdrucksensor aktivieren</string>
+    <string name="hw_0d_disable_title">Hardwaretasten deaktivieren</string>
+    <string name="hw_0d_disable_summary">Hardwaretasten deaktivieren</string>
+    <string name="sound_settings">Audioeinstellungen</string>
+    <string name="snd_compander_title">Compander deaktivieren</string>
+    <string name="snd_compander_summary">Deaktivieren Sie Compander bei kabelgebundenen Kopfhörer für bessere Klangqualität</string>
+    <string name="snd_headphone_title">Kopfhörer Verstärkung</string>
+    <string name="snd_headphone_summary">+ 8 dB</string>
+    <string name="snd_earpiece_title">Headset Verstärkung</string>
+    <string name="snd_earpiece_summary">+ 8 dB</string>
+    <string name="snd_mic_title">Mikrofonverstärkung</string>
+    <string name="snd_mic_summary">+ 8 dB</string>
 </resources>

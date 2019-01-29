@@ -16,6 +16,7 @@
 -->
 <resources>
     <!-- App -->
+    <string name="app_name">BaikalOS Extras</string>
     <string name="advanced_settings">Avanzato</string>
     <!-- Ambient display -->
     <string name="display_title">Schermo</string>
@@ -52,4 +53,13 @@
     <string name="qfp_enable_summary">Abilita impronta digitale</string>
     <string name="hw_0d_disable_title">Disabilita tasti HW</string>
     <string name="hw_0d_disable_summary">Disabilita tasti HW</string>
+    <string name="sound_settings">Impostazioni audio</string>
+    <string name="snd_compander_title">Disattivare Compander</string>
+    <string name="snd_compander_summary">Disabilitare il Compander per cuffie cablate per migliore qualità del suono</string>
+    <string name="snd_headphone_title">Guadagno suono cuffie</string>
+    <string name="snd_headphone_summary">+ 8 dB</string>
+    <string name="snd_earpiece_title">Guadagno suono auricolare</string>
+    <string name="snd_earpiece_summary">+ 8 dB</string>
+    <string name="snd_mic_title">Guadagno suono Microfono</string>
+    <string name="snd_mic_summary">+ 8 dB</string>
 </resources>

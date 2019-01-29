@@ -61,6 +61,9 @@
     <string name="snd_compander_title">Отключить компандер</string>
     <string name="snd_compander_summary">Отключить компандер для проводных наушников для лучшего качества звучания</string>
     <string name="snd_headphone_title">Усиление наушников</string>
+    <string name="snd_headphone_summary">+8 дБ</string>
     <string name="snd_earpiece_title">Усиление разговорного динамика</string>
+    <string name="snd_earpiece_summary">+8 дБ</string>
     <string name="snd_mic_title">Усиление микрофона</string>
+    <string name="snd_mic_summary">+8 дБ</string>
 </resources>
