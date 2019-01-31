@@ -96,4 +96,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     baikal.eng.perf=1 \
     baikal.eng.therm=1
 
+# Set SIM2 default ringtone
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=Ring_Synth_04.ogg,Ring_Synth_04.ogg \
 
