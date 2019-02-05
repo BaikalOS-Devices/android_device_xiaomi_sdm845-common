@@ -16,11 +16,28 @@
 -->
 <resources>
     <!-- App -->
+    <string name="advanced_settings">Разширени</string>
     <!-- Ambient display -->
+    <string name="display_title">Дисплей</string>
+    <string name="device_doze_title">Активнен дисплей</string>
     <!-- Battery -->
+    <string name="battery_settings_title">Батерия</string>
+    <string name="qc_title">Бързо зареждане</string>
     <!-- Camera -->
+    <string name="camera_pref_title">Камера</string>
     <!-- Kcal -->
+    <string name="kcal_red">Червено</string>
+    <string name="kcal_green">Зелено</string>
+    <string name="kcal_blue">Синьо</string>
+    <string name="kcal_saturation">Насищане</string>
+    <string name="kcal_contrast">Контраст</string>
+    <string name="menu_reset">Начално състояние</string>
+    <string name="kcal_color_temp">Температура на цвета (K)</string>
     <!-- Volte -->
     <!-- HALL Sensor -->
     <!-- FB Boost -->
+    <string name="sound_settings">Настройки на звука</string>
+    <string name="snd_headphone_summary">+ 8 dB</string>
+    <string name="snd_earpiece_summary">+8 dB</string>
+    <string name="snd_mic_summary">+ 8 dB</string>
 </resources>
