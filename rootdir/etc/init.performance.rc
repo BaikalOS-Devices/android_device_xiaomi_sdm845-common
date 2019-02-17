@@ -11,7 +11,7 @@ on property:baikal.eng.perf.profile=balance
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 576000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 2
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 300
@@ -20,10 +20,10 @@ on property:baikal.eng.perf.profile=balance
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     write /sys/class/devfreq/soc:qcom,cpubw/governor bw_hwmon
     write /sys/class/devfreq/soc:qcom,l3-cdsp/governor userspace
-    write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor mem_latency
-    write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor mem_latency
-    write /sys/class/devfreq/soc:qcom,l3-cpu0/governor mem_latency
-    write /sys/class/devfreq/soc:qcom,l3-cpu4/governor mem_latency
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor cpufreq
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor cpufreq
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/governor cpufreq
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/governor cpufreq
     write /sys/class/devfreq/soc:qcom,snoc_cnoc_keepalive/governor powersave
 
     write /sys/block/sda/queue/scheduler bfq
@@ -50,8 +50,8 @@ on property:baikal.eng.perf.profile=performance
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     #write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
     write /sys/class/devfreq/soc:qcom,cpubw/governor performance
-    write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor performance
-    write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor performance
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor performance
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor performance
     write /sys/class/devfreq/soc:qcom,l3-cpu0/governor performance
     write /sys/class/devfreq/soc:qcom,l3-cpu4/governor performance
     write /sys/class/devfreq/soc:qcom,l3-cdsp/governor performance
@@ -72,7 +72,7 @@ on property:baikal.eng.perf.profile=battery
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 576000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 30
@@ -80,8 +80,8 @@ on property:baikal.eng.perf.profile=battery
 
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
     write /sys/class/devfreq/soc:qcom,cpubw/governor powersave
-    write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor powersave
-    write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor powersave
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor powersave
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor powersave
     write /sys/class/devfreq/soc:qcom,l3-cpu0/governor powersave
     write /sys/class/devfreq/soc:qcom,l3-cpu4/governor powersave
     write /sys/class/devfreq/soc:qcom,l3-cdsp/governor powersave
@@ -110,8 +110,8 @@ on property:baikal.eng.perf.profile=gaming
 
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
     write /sys/class/devfreq/soc:qcom,cpubw/governor performance
-    write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor performance
-    write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor performance
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor performance
+    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor performance
     write /sys/class/devfreq/soc:qcom,l3-cpu0/governor performance
     write /sys/class/devfreq/soc:qcom,l3-cpu4/governor performance
     write /sys/class/devfreq/soc:qcom,l3-cdsp/governor performance
