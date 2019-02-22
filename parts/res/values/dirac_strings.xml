@@ -4,14 +4,12 @@
     <string name="dirac_settings">Dirac Settings</string>
     <string name="dirac_enhancer">Dirac Sound Enhancer</string>
     <string name="dirac_headsets">Select Headset Type</string>
-    <string name="dirac_mode">Select Mode</string>
-    <string name="misound_settings">MiSound Settings</string>
-    <string name="mi_sound_enhancer">MiSound Enhancer</string>
-    <string name="mi_sound_headsets">Select Headset Type</string>
-    <string name="mi_sound_mode">Select Mode</string>
+    <string name="dirac_mode">Movie Mode</string>
+    <string name="dirac_command">Command</string>
     
     <string name="dirac_preset_title">Sound preset</string>
 
+    <string name="dirac_preset_manual">Manual</string>
     <string name="dirac_preset_default">Default</string>
     <string name="dirac_preset_rock">Rock</string>
     <string name="dirac_preset_jazz">Jazz</string>

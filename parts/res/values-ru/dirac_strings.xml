@@ -4,12 +4,13 @@
     <string name="dirac_settings">Настройки Dirac</string>
     <string name="dirac_enhancer">Улучшайзер звука Dirac</string>
     <string name="dirac_headsets">Тип наушников</string>
-    <string name="dirac_mode">Выберите режим</string>
+    <string name="dirac_mode">Режим Кино</string>
     <string name="misound_settings">Настройки MiSound</string>
     <string name="mi_sound_enhancer">Улучшайзер звука MiSound</string>
     <string name="mi_sound_headsets">Выберите тип наушников</string>
     <string name="mi_sound_mode">Выберите режим</string>
     <string name="dirac_preset_title">Профиль звука</string>
+    <string name="dirac_preset_manual">Пользовательский</string>
     <string name="dirac_preset_default">По умолчанию</string>
     <string name="dirac_preset_rock">Рок</string>
     <string name="dirac_preset_jazz">Джаз</string>

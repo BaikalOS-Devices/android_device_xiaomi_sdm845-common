@@ -57,6 +57,21 @@ public class DiracAudioEnhancer
     checkStatus(setParameter(4, paramInt));
   }
 
+  public void setParam(int code, int paramInt)
+    throws IllegalStateException, IllegalArgumentException, UnsupportedOperationException
+  {
+    checkStatus(setParameter(code, paramInt));
+  }
+
+  public int getParam(int code, int paramInt)
+    throws IllegalStateException, IllegalArgumentException, UnsupportedOperationException
+  {
+    int[] arrayOfInt = new int[16];
+    checkStatus(getParameter(code, arrayOfInt));
+    return arrayOfInt[0];
+  }
+
+
     public void setLevel(int band, float level) throws IllegalStateException,
             IllegalArgumentException, UnsupportedOperationException {
 

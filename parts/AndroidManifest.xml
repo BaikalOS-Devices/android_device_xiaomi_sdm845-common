@@ -74,12 +74,5 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name="org.omnirom.device.MiSoundBootReceiver" android:enabled="true">
-            <intent-filter android:priority="2147483646">
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-
     </application>
 </manifest>

@@ -13,7 +13,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
         android:key="display"
@@ -91,6 +93,7 @@
     	    android:key="dirac_enhancer"
     	    android:title="@string/dirac_enhancer"
     	    android:persistent="false" />
+
         <ListPreference
     	    android:key="dirac_headsets"
     	    android:title="@string/dirac_headsets"
@@ -106,6 +109,78 @@
             android:title="@string/dirac_preset_title"
             android:summary="%s" />
 
+    	<!-- SwitchPreference
+    	    android:key="dirac_mode"
+    	    android:title="@string/dirac_mode"
+    	    android:persistent="false" / -->
+
+    	<!-- SwitchPreference
+    	    android:key="dirac_command"
+    	    android:title="@string/dirac_command"
+    	    android:persistent="false" / -->
+
+        <PreferenceCategory
+            android:key="dirac_eq_settings"
+            android:title="@string/dirac_eq_settings">
+        
+
+            <org.omnirom.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_0"
+                android:title="@string/dirac_eq_band_0"        
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.omnirom.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_1"
+                android:title="@string/dirac_eq_band_1"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.omnirom.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_2"
+                android:title="@string/dirac_eq_band_2"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.omnirom.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_3"
+                android:title="@string/dirac_eq_band_3"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.omnirom.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_4"
+                android:title="@string/dirac_eq_band_4"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.omnirom.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_5"
+                android:title="@string/dirac_eq_band_5"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.omnirom.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_6"
+                android:title="@string/dirac_eq_band_6"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+        </PreferenceCategory>
         <!-- ListPreference
     	    android:key="dirac_mode"
     	    android:title="@string/dirac_mode"

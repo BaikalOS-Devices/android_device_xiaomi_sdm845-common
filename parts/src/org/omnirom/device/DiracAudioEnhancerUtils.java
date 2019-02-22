@@ -73,9 +73,14 @@ public class DiracAudioEnhancerUtils
     } else {
       i = 0;
     }
-    mAudEnhncr.setEnabled(paramBoolean);
     mAudEnhncr.setMusic(i);
+    mAudEnhncr.setEnabled(paramBoolean);
     return;
+  }
+
+  public void setParam(Context paramContext, int paramInt, int value)
+  {
+    mAudEnhncr.setParam(paramInt,value);
   }
 
   public void setHeadsetType(Context paramContext, int paramInt)
@@ -87,6 +92,11 @@ public class DiracAudioEnhancerUtils
   public void setMode(Context paramContext, int paramInt)
   {
     mAudEnhncr.setMode(paramInt);
+  }
+
+  public int getMode(Context paramContext)
+  {
+    return mAudEnhncr.getMode();
   }
 
     protected void setLevel(String preset) {
@@ -106,5 +116,17 @@ public class DiracAudioEnhancerUtils
         }
         return selected;
     }
+
+    protected void setLevel(int band, int level) {
+        if( band < 0 || band > 6 ) return;
+        mAudEnhncr.setLevel(band,(float)level);
+    }
+
+    protected int getLevel(int band) {
+        if( band < 0 || band > 6 ) return 0;
+        return (int) mAudEnhncr.getLevel(band);
+    }
+
+
 }
 
