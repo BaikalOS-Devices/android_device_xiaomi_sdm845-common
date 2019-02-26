@@ -7,6 +7,8 @@ on init
     mount none /system/lib64/soundfx/libvolumelistener.so /vendor/lib64/soundfx/libvolumelistener.so bind
     mount none /system/lib/soundfx/libvolumelistener.so /vendor/lib/soundfx/libvolumelistener.so bind
     mount none /system/bin/hw/android.hardware.health@2.0-service /vendor/bin/hw/android.hardware.health@2.0-service bind
+    mount none /dev/null /vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc bind
+
     # Boot time FS tune
 #    write /sys/block/sda/queue/iostats 0
 #    write /sys/block/sda/queue/scheduler cfq
@@ -37,11 +39,16 @@ on boot
     #write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 1
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     write /sys/block/sda/queue/scheduler maple
     write /sys/block/sdf/queue/scheduler maple
+
+
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
     write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
     write /sys/module/adreno_idler/parameters/adreno_idler_active Y
+
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/governor cpufreq
+
     write /sys/module/msm_performance/parameters/touchboost 0
     write /proc/sys/vm/swappiness 40
     write /proc/sys/vm/vfs_cache_pressure 100

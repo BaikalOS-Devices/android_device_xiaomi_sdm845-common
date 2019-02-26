@@ -6,124 +6,299 @@ on property:baikal.eng.perf.profile=default
 
 # Balance (default profile)
 on property:baikal.eng.perf.profile=balance
+    setprop "baikal.eng.perf.cur_profile" "balance"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 576000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 2
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1228800
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1536000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 55
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 55
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres "50 50 50 50"
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres "60 60 60 60"
+
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres "60 60 60 60"
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres "70 70 70 70"
+
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_multiplier 10
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_divider 10
+
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_multiplier 10
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_divider 10
+
+    write /proc/sys/kernel/sched_boost 1
+    #write /proc/sys/kernel/sched_downmigrate 60
+    #write /proc/sys/kernel/sched_upmigrate 80
+    #write /proc/sys/kernel/sched_downmigrate 60
+    #write /proc/sys/kernel/sched_upmigrate 80
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 300
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 5
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    write /sys/class/devfreq/soc:qcom,cpubw/governor bw_hwmon
-    write /sys/class/devfreq/soc:qcom,l3-cdsp/governor userspace
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor cpufreq
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor cpufreq
-    write /sys/class/devfreq/soc:qcom,l3-cpu0/governor cpufreq
-    write /sys/class/devfreq/soc:qcom,l3-cpu4/governor cpufreq
-    write /sys/class/devfreq/soc:qcom,snoc_cnoc_keepalive/governor powersave
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
+    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+
+    write /sys/class/devfreq/soc:qcom,cpubw/min_freq 2288
+    write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
+    write /sys/class/devfreq/soc:qcom,cpubw/polling_interval 50
+
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/min_freq 762
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/max_freq 6881
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/polling_interval 10
+
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/min_freq 300000000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/min_freq 762
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/max_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/min_freq 762
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/max_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/min_freq 300000000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/min_freq 300000000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
 
     write /sys/block/sda/queue/scheduler bfq
     write /sys/block/sdf/queue/scheduler bfq
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
-    write /proc/sys/vm/swappiness 40
+    write /proc/sys/vm/swappiness 1
     write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
 
 # Performance (based on DrunkSauce Lite)
 on property:baikal.eng.perf.profile=performance
+    setprop "baikal.eng.perf.cur_profile" "performance"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 576000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 902400
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1286400
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1766400
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 2803200
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 55
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 55
+
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_multiplier 13
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_divider 10
+
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_multiplier 13
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_divider 10
+
+    write /proc/sys/kernel/sched_boost 1
+    #write /proc/sys/kernel/sched_downmigrate 40
+    #write /proc/sys/kernel/sched_upmigrate 50
+    #write /proc/sys/kernel/sched_downmigrate 40
+    #write /proc/sys/kernel/sched_upmigrate 50
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 500
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 10
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    #write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
-    write /sys/class/devfreq/soc:qcom,cpubw/governor performance
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor performance
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor performance
-    write /sys/class/devfreq/soc:qcom,l3-cpu0/governor performance
-    write /sys/class/devfreq/soc:qcom,l3-cpu4/governor performance
-    write /sys/class/devfreq/soc:qcom,l3-cdsp/governor performance
-    write /sys/class/devfreq/soc:qcom,snoc_cnoc_keepalive/governor performance
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
+    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+
+    write /sys/class/devfreq/soc:qcom,cpubw/min_freq 8132
+    write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
+    write /sys/class/devfreq/soc:qcom,cpubw/polling_interval 10
+
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/min_freq 2597
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/max_freq 6881
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/polling_interval 10
+
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/min_freq 844800000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/polling_interval 10
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/min_freq 2597
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/max_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/polling_interval 10
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/min_freq 2597
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/max_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/polling_interval 10
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/min_freq 844800000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/polling_interval 10
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/min_freq 844800000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 10
 
     write /sys/block/sda/queue/scheduler fiops
     write /sys/block/sdf/queue/scheduler fiops
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "N"
-    write /proc/sys/vm/swappiness 60
+
+    write /proc/sys/vm/swappiness 1
     write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
 
 # Battery
 on property:baikal.eng.perf.profile=battery
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1516800
+    setprop "baikal.eng.perf.cur_profile" "battery"
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1228800
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1056000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 576000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1228800
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1056000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 99
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 99
+
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres "70 70 70 70"
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres "80 80 80 80"
+
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres "80 80 80 80"
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres "90 90 90 90"
+
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_multiplier 5
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_divider 10
+
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_multiplier 4
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_divider 10
+
+
+    write /proc/sys/kernel/sched_boost 0
+    #write /proc/sys/kernel/sched_downmigrate 90
+    #write /proc/sys/kernel/sched_upmigrate 95
+    #write /proc/sys/kernel/sched_downmigrate 90
+    #write /proc/sys/kernel/sched_upmigrate 95
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 30
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 0
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
-    write /sys/class/devfreq/soc:qcom,cpubw/governor powersave
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor powersave
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor powersave
-    write /sys/class/devfreq/soc:qcom,l3-cpu0/governor powersave
-    write /sys/class/devfreq/soc:qcom,l3-cpu4/governor powersave
-    write /sys/class/devfreq/soc:qcom,l3-cdsp/governor powersave
-    write /sys/class/devfreq/soc:qcom,snoc_cnoc_keepalive/governor powersave
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 257000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
+    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+
+    write /sys/class/devfreq/soc:qcom,cpubw/min_freq 2288
+    write /sys/class/devfreq/soc:qcom,cpubw/max_freq 8132
+    write /sys/class/devfreq/soc:qcom,cpubw/polling_interval 50
+
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/min_freq 762
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/max_freq 2597
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/min_freq 300000000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/max_freq 844800000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/min_freq 762
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/max_freq 2597
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/min_freq 762
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/max_freq 2597
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/min_freq 300000000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/max_freq 844800000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/min_freq 300000000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 844800000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
 
     write /sys/block/sda/queue/scheduler zen
     write /sys/block/sdf/queue/scheduler zen
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
-    write /proc/sys/vm/swappiness 20
-    write /proc/sys/vm/vfs_cache_pressure 40
+    write /proc/sys/vm/swappiness 60
+    write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
 
 # Gaming
 on property:baikal.eng.perf.profile=gaming
+    setprop "baikal.eng.perf.cur_profile" "gaming"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 576000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1228800
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1536000
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1766400
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 2803200
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 45
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 45
+
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 1000
-    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 15
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_multiplier 14
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_divider 10
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
-    write /sys/class/devfreq/soc:qcom,cpubw/governor performance
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu0/governor performance
-    #write /sys/class/devfreq/soc:qcom,memlat-cpu4/governor performance
-    write /sys/class/devfreq/soc:qcom,l3-cpu0/governor performance
-    write /sys/class/devfreq/soc:qcom,l3-cpu4/governor performance
-    write /sys/class/devfreq/soc:qcom,l3-cdsp/governor performance
-    write /sys/class/devfreq/soc:qcom,snoc_cnoc_keepalive/governor performance
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_multiplier 14
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_divider 10
+
+    write /proc/sys/kernel/sched_boost 1
+    #write /proc/sys/kernel/sched_downmigrate 40
+    #write /proc/sys/kernel/sched_upmigrate 50
+    #write /proc/sys/kernel/sched_downmigrate 40
+    #write /proc/sys/kernel/sched_upmigrate 50
+
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
+    write /sys/module/cpu_boost/parameters/input_boost_ms 2000
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 25
+
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 710000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
+    write /sys/module/adreno_idler/parameters/adreno_idler_active "N"
+
+    write /sys/class/devfreq/soc:qcom,cpubw/min_freq 14236
+    write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
+    write /sys/class/devfreq/soc:qcom,cpubw/polling_interval 50
+
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/min_freq 6881
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/max_freq 6881
+    write /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/min_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cdsp/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/min_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/max_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu0/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/min_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/max_freq 6881
+    write /sys/class/devfreq/soc:qcom,memlat-cpu4/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/min_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu0/polling_interval 50
+
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/min_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/max_freq 1478400000
+    write /sys/class/devfreq/soc:qcom,l3-cpu4/polling_interval 50
 
     write /sys/block/sda/queue/scheduler tripndroid
     write /sys/block/sdf/queue/scheduler tripndroid
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "N"
-    write /proc/sys/vm/swappiness 60
+    write /proc/sys/vm/swappiness 1
     write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
 
-#on property:baikal.eng.perf.profile=*
-#    setprop "baikal.eng.perf.profile" "default"

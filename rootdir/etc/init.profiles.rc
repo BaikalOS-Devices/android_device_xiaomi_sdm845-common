@@ -37,14 +37,17 @@ on property:baikal.therm.profile=gaming
 on property:baikal.therm.profile=gaming2
     setprop "baikal.eng.therm.profile" "gaming2"
 
+on property:baikal.therm.profile=nolimits
+    setprop "baikal.eng.therm.profile" "nolimits"
+
 on property:baikal.therm.profile=cool
     setprop "baikal.eng.therm.profile" "cool"
 
 on property:baikal.therm.profile=camera
     setprop "baikal.eng.therm.profile" "camera"
 
-on property:baikal.therm.profile=video
-    setprop "baikal.eng.therm.profile" "video"
+on property:baikal.therm.profile=high
+    setprop "baikal.eng.therm.profile" "high"
 
 on property:baikal.therm.profile=incall
     setprop "baikal.eng.therm.profile" "incall"
