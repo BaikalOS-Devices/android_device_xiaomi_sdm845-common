@@ -66,4 +66,12 @@
     <string name="snd_earpiece_summary">+8 дБ</string>
     <string name="snd_mic_title">Усиление микрофона</string>
     <string name="snd_mic_summary">+8 дБ</string>
+    <string name="dirac_eq_settings">Эквалайзер</string>
+    <string name="dirac_eq_band_0">125 Гц</string>
+    <string name="dirac_eq_band_1">500 Гц</string>
+    <string name="dirac_eq_band_2">1 КГц</string>
+    <string name="dirac_eq_band_3">5 КГц</string>
+    <string name="dirac_eq_band_4">8 КГц</string>
+    <string name="dirac_eq_band_5">12.5 КГц</string>
+    <string name="dirac_eq_band_6">16 КГц</string>
 </resources>
