@@ -4,11 +4,6 @@
     <string name="dirac_settings">Pengaturan Dirac</string>
     <string name="dirac_enhancer">Dirac Sound Enhancer</string>
     <string name="dirac_headsets">Pilih jenis Headset</string>
-    <string name="dirac_mode">Pilihan Mode</string>
-    <string name="misound_settings">Pengaturan MiSound</string>
-    <string name="mi_sound_enhancer">MiSound Enhancer</string>
-    <string name="mi_sound_headsets">Pilih jenis Headset</string>
-    <string name="mi_sound_mode">Pilihan Mode</string>
     <string name="dirac_preset_title">Preset Suara</string>
     <string name="dirac_preset_default">Default</string>
     <string name="dirac_preset_rock">Rock</string>

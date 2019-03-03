@@ -4,11 +4,6 @@
     <string name="dirac_settings">迪拉克设置</string>
     <string name="dirac_enhancer">迪拉克音效提升</string>
     <string name="dirac_headsets">选择耳机类型</string>
-    <string name="dirac_mode">选择模式</string>
-    <string name="misound_settings">小米声音设置</string>
-    <string name="mi_sound_enhancer">小米音质提升</string>
-    <string name="mi_sound_headsets">选择耳机类型</string>
-    <string name="mi_sound_mode">选择模式</string>
     <string name="dirac_preset_title">声音预设</string>
     <string name="dirac_preset_default">默认</string>
     <string name="dirac_preset_rock">摇滚</string>

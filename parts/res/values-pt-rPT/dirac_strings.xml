@@ -4,11 +4,6 @@
     <string name="dirac_settings">Configurações de Dirac</string>
     <string name="dirac_enhancer">Amplificador Mi Sound</string>
     <string name="dirac_headsets">Selecione o tipo de fone de ouvido</string>
-    <string name="dirac_mode">Selecione o modo</string>
-    <string name="misound_settings">Configurações MiSound</string>
-    <string name="mi_sound_enhancer">Amplificador Mi Sound</string>
-    <string name="mi_sound_headsets">Selecione o tipo de fone de ouvido</string>
-    <string name="mi_sound_mode">Selecione o modo</string>
     <string name="dirac_preset_title">Predefinição de som</string>
     <string name="dirac_preset_default">Padrão</string>
     <string name="dirac_preset_rock">Rock</string>
