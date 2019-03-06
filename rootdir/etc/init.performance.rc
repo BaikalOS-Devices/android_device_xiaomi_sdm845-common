@@ -6,6 +6,10 @@ on property:baikal.eng.perf.profile=default
 
 # Balance (default profile)
 on property:baikal.eng.perf.profile=balance
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+
     setprop "baikal.eng.perf.cur_profile" "balance"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
@@ -17,8 +21,6 @@ on property:baikal.eng.perf.profile=balance
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 55
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 55
 
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
 
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres "50 50 50 50"
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres "60 60 60 60"
@@ -37,6 +39,9 @@ on property:baikal.eng.perf.profile=balance
     #write /proc/sys/kernel/sched_upmigrate 80
     #write /proc/sys/kernel/sched_downmigrate 60
     #write /proc/sys/kernel/sched_upmigrate 80
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 300
@@ -84,6 +89,10 @@ on property:baikal.eng.perf.profile=balance
 # Performance (based on DrunkSauce Lite)
 on property:baikal.eng.perf.profile=performance
     setprop "baikal.eng.perf.cur_profile" "performance"
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 902400
@@ -93,9 +102,6 @@ on property:baikal.eng.perf.profile=performance
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 2803200
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 55
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 55
-
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_multiplier 13
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_divider 10
@@ -108,6 +114,9 @@ on property:baikal.eng.perf.profile=performance
     #write /proc/sys/kernel/sched_upmigrate 50
     #write /proc/sys/kernel/sched_downmigrate 40
     #write /proc/sys/kernel/sched_upmigrate 50
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 500
@@ -156,6 +165,10 @@ on property:baikal.eng.perf.profile=performance
 # Battery
 on property:baikal.eng.perf.profile=battery
     setprop "baikal.eng.perf.cur_profile" "battery"
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1228800
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1056000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
@@ -165,9 +178,6 @@ on property:baikal.eng.perf.profile=battery
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1056000
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 99
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 99
-
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
 
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres "70 70 70 70"
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres "80 80 80 80"
@@ -187,6 +197,9 @@ on property:baikal.eng.perf.profile=battery
     #write /proc/sys/kernel/sched_upmigrate 95
     #write /proc/sys/kernel/sched_downmigrate 90
     #write /proc/sys/kernel/sched_upmigrate 95
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 30
@@ -234,6 +247,10 @@ on property:baikal.eng.perf.profile=battery
 # Gaming
 on property:baikal.eng.perf.profile=gaming
     setprop "baikal.eng.perf.cur_profile" "gaming"
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1228800
@@ -243,9 +260,6 @@ on property:baikal.eng.perf.profile=gaming
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 2803200
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 45
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_load 45
-
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_multiplier 14
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_divider 10
@@ -258,6 +272,9 @@ on property:baikal.eng.perf.profile=gaming
     #write /proc/sys/kernel/sched_upmigrate 50
     #write /proc/sys/kernel/sched_downmigrate 40
     #write /proc/sys/kernel/sched_upmigrate 50
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 2000
