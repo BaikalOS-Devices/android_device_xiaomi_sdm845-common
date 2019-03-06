@@ -66,4 +66,12 @@
     <string name="snd_earpiece_summary">+ 8 分贝</string>
     <string name="snd_mic_title">麦克风增益</string>
     <string name="snd_mic_summary">+ 8 分贝</string>
+    <string name="dirac_eq_settings">均衡器</string>
+    <string name="dirac_eq_band_0">125 Hz</string>
+    <string name="dirac_eq_band_1">500 Hz</string>
+    <string name="dirac_eq_band_2">1 KHz</string>
+    <string name="dirac_eq_band_3">5 KHz</string>
+    <string name="dirac_eq_band_4">8 KHz</string>
+    <string name="dirac_eq_band_5">12.5 KHz</string>
+    <string name="dirac_eq_band_6">16 KHz</string>
 </resources>
