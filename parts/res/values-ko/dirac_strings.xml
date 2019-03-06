@@ -4,11 +4,6 @@
     <string name="dirac_settings">Dirac 음장 설정</string>
     <string name="dirac_enhancer">Dirac Sound Enhancer</string>
     <string name="dirac_headsets">헤드셋 종류 선택</string>
-    <string name="dirac_mode">모드 선택</string>
-    <string name="misound_settings">Mi사운드 설정</string>
-    <string name="mi_sound_enhancer">Mi사운드 Enhancer</string>
-    <string name="mi_sound_headsets">헤드셋 종류 선택</string>
-    <string name="mi_sound_mode">모드 선택</string>
     <string name="dirac_preset_title">사운드 프리셋</string>
     <string name="dirac_preset_default">기본값</string>
     <string name="dirac_preset_rock">락</string>

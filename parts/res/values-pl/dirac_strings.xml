@@ -4,11 +4,6 @@
     <string name="dirac_settings">Ustawienia Dirac</string>
     <string name="dirac_enhancer">Ulepszenia dźwięku Dirac</string>
     <string name="dirac_headsets">Wybierz typ słuchawek</string>
-    <string name="dirac_mode">Wybierz tryb</string>
-    <string name="misound_settings">Ustawienia dźwięku Mi</string>
-    <string name="mi_sound_enhancer">Ulepszenia dźwięku Mi</string>
-    <string name="mi_sound_headsets">Wybierz typ słuchawek</string>
-    <string name="mi_sound_mode">Wybierz tryb</string>
     <string name="dirac_preset_title">Profil dźwięku</string>
     <string name="dirac_preset_default">Domyślny</string>
     <string name="dirac_preset_rock">Rock</string>

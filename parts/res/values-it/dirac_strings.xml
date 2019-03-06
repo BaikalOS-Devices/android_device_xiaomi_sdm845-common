@@ -4,11 +4,6 @@
     <string name="dirac_settings">Impostazioni Dirac</string>
     <string name="dirac_enhancer">Miglioramento Dirac Sound</string>
     <string name="dirac_headsets">Scegli tipologia cuffie</string>
-    <string name="dirac_mode">Seleziona la modalità</string>
-    <string name="misound_settings">Impostazioni MiSound</string>
-    <string name="mi_sound_enhancer">Miglioramento MiSound</string>
-    <string name="mi_sound_headsets">Scegli tipologia cuffie</string>
-    <string name="mi_sound_mode">Seleziona la modalità</string>
     <string name="dirac_preset_title">Preset suono</string>
     <string name="dirac_preset_default">Predefinito</string>
     <string name="dirac_preset_rock">Rock</string>

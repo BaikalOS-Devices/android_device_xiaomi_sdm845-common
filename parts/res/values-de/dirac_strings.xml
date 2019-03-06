@@ -4,11 +4,6 @@
     <string name="dirac_settings">Dirac-Einstellungen</string>
     <string name="dirac_enhancer">Dirac Klangverbesserung</string>
     <string name="dirac_headsets">Kopfhörer auswählen</string>
-    <string name="dirac_mode">Modus wählen</string>
-    <string name="misound_settings">MiSound Einstellungen</string>
-    <string name="mi_sound_enhancer">MiSound Enhancer</string>
-    <string name="mi_sound_headsets">Kopfhörer auswählen</string>
-    <string name="mi_sound_mode">Modus wählen</string>
     <string name="dirac_preset_title">Tonvoreinstellung</string>
     <string name="dirac_preset_default">Standard</string>
     <string name="dirac_preset_rock">Rock</string>
