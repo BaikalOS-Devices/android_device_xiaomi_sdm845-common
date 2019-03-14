@@ -95,6 +95,10 @@ PRODUCT_COPY_FILES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 >>>>>>> 1ea080f... sdm845-common: Import audio configs
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbthost_if
+
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
