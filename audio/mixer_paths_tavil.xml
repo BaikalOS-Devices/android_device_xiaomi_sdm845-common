@@ -174,6 +174,7 @@
     <ctl name="QUAT_MI2S_RX_Voice Mixer Voip" value="0" />
     <ctl name="QUAT_MI2S_RX_Voice Mixer VoiceMMode1" value="0" />
     <ctl name="QUAT_MI2S_RX_Voice Mixer VoiceMMode2" value="0" />
+<<<<<<< HEAD
 
     <ctl name="SLIM_0_RX Format" value="S16_LE" />
     <ctl name="SLIM_2_RX Format" value="UNPACKED" />
@@ -186,6 +187,11 @@
     <ctl name="SLIM_5_RX SampleRate" value="KHZ_176P4" />
     <ctl name="SLIM_6_RX SampleRate" value="KHZ_192" />
 
+=======
+    <ctl name="SLIM_2_RX Format" value="UNPACKED" />
+    <ctl name="SLIM_2_RX SampleRate" value="KHZ_48" />
+    <ctl name="SLIM_5_RX SampleRate" value="KHZ_44P1" />
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
     <ctl name="SLIM_0_RX Channels" value="One" />
     <ctl name="SLIM_5_RX Channels" value="One" />
     <ctl name="SLIM_6_RX Channels" value="One" />
@@ -2363,7 +2369,11 @@
     </path>
 
     <path name="speaker">
+<<<<<<< HEAD
         <!-- ctl name="SLIM RX0 MUX" value="AIF1_PB" />
+=======
+        <ctl name="SLIM RX0 MUX" value="AIF1_PB" />
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
         <ctl name="CDC_IF RX0 MUX" value="SLIM RX0" />
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="CDC_IF RX1 MUX" value="SLIM RX1" />
@@ -2379,10 +2389,14 @@
         <ctl name="SpkrRight COMP Switch" value="1" />
         <ctl name="SpkrRight BOOST Switch" value="1" />
         <ctl name="SpkrRight VISENSE Switch" value="1" />
+<<<<<<< HEAD
         <ctl name="SpkrRight SWR DAC_Port Switch" value="1" /-->
     	<ctl name="QUAT_MI2S_RX SampleRate" value="KHZ_48" />
     	<ctl name="QUAT_MI2S_RX Format" value="S16_LE" />
 	<path name="speaker-mono" />	
+=======
+        <ctl name="SpkrRight SWR DAC_Port Switch" value="1" />
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
     </path>
 
     <path name="speaker-mono">
@@ -2395,8 +2409,11 @@
         <ctl name="SpkrLeft BOOST Switch" value="1" />
         <ctl name="SpkrLeft VISENSE Switch" value="1" />
         <ctl name="SpkrLeft SWR DAC_Port Switch" value="1" />
+<<<<<<< HEAD
     	<ctl name="QUAT_MI2S_RX SampleRate" value="KHZ_48" />
     	<ctl name="QUAT_MI2S_RX Format" value="S16_LE" />
+=======
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
     </path>
 
     <path name="speaker-mono-2">
@@ -2409,8 +2426,11 @@
         <ctl name="SpkrRight BOOST Switch" value="1" />
         <ctl name="SpkrRight VISENSE Switch" value="1" />
         <ctl name="SpkrRight SWR DAC_Port Switch" value="1" />
+<<<<<<< HEAD
     	<ctl name="QUAT_MI2S_RX SampleRate" value="KHZ_48" />
     	<ctl name="QUAT_MI2S_RX Format" value="S16_LE" />
+=======
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
     </path>
 
     <path name="speaker-qrd">
@@ -2569,7 +2589,10 @@
         <ctl name="SLIM_6_RX Channels" value="Two" />
         <ctl name="RX INT1_2 MUX" value="RX2" />
         <ctl name="RX INT2_2 MUX" value="RX3" />
+<<<<<<< HEAD
         <ctl name="RX HPH Mode" value="CLS_AB_HIFI" />
+=======
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
     </path>
 
     <path name="headphones-44.1">
@@ -2580,7 +2603,10 @@
         <ctl name="RX INT2_1 MIX1 INP0" value="RX5" />
         <ctl name="RX INT1_1 NATIVE MUX" value="ON" />
         <ctl name="RX INT2_1 NATIVE MUX" value="ON" />
+<<<<<<< HEAD
         <ctl name="RX HPH Mode" value="CLS_AB_HIFI" />
+=======
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
     </path>
 
     <path name="asrc-mode">
@@ -2696,8 +2722,13 @@
         <path name="speaker" />
         <ctl name="COMP1 Switch" value="0" />
         <ctl name="COMP2 Switch" value="0" />
+<<<<<<< HEAD
         <ctl name="HPHL Volume" value="20" />
         <ctl name="HPHR Volume" value="20" />
+=======
+        <ctl name="HPHL Volume" value="15" />
+        <ctl name="HPHR Volume" value="15" />
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
     </path>
 
     <path name="speaker-and-line">
@@ -3231,7 +3262,11 @@
     </path>
 
     <path name="mmap-playback bt-sco-wb">
+<<<<<<< HEAD
         <ctl name="BT SampleRate" value="KHZ_16" />
+=======
+        <ctl name="BT SampleRate" value="16000" />
+>>>>>>> 1ea080f... sdm845-common: Import audio configs
         <path name="mmap-playback bt-sco" />
     </path>
 
