@@ -4,7 +4,10 @@
     <string name="dirac_settings">迪拉克设置</string>
     <string name="dirac_enhancer">迪拉克音效提升</string>
     <string name="dirac_headsets">选择耳机类型</string>
+    <string name="dirac_mode">观影模式</string>
+    <string name="dirac_command">命令</string>
     <string name="dirac_preset_title">声音预设</string>
+    <string name="dirac_preset_manual">手动</string>
     <string name="dirac_preset_default">默认</string>
     <string name="dirac_preset_rock">摇滚</string>
     <string name="dirac_preset_jazz">爵士</string>
