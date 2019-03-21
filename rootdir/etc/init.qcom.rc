@@ -1,22 +1,22 @@
 on init
     mount none /sbin/chargeonlymode /sbin/charger bind
 
-    mount none /system/etc/audio_output_policy.conf /vendor/etc/audio_output_policy.conf bind
-    mount none /system/etc/audio_platform_info.xml /vendor/etc/audio_platform_info.xml bind
+#    mount none /system/etc/audio_output_policy.conf /vendor/etc/audio_output_policy.conf bind
+#    mount none /system/etc/audio_platform_info.xml /vendor/etc/audio_platform_info.xml bind
 
 
-    mount none /system/etc/audio/audio_policy_configuration.xml /vendor/etc/audio/audio_policy_configuration.xml bind
-    mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio_policy_configuration.xml bind
-    mount none /system/etc/a2dp_audio_policy_configuration.xml /vendor/etc/a2dp_audio_policy_configuration.xml bind
-    mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
-    mount none /system/etc/mixer_paths_overlay_static.xml /vendor/etc/mixer_paths_overlay_static.xml bind
-    mount none /system/etc/mixer_paths_overlay_dynamic.xml /vendor/etc/mixer_paths_overlay_dynamic.xml bind
-    mount none /system/etc/mixer_paths_tavil.xml /vendor/etc/mixer_paths_tavil.xml bind
+#    mount none /system/etc/audio/audio_policy_configuration.xml /vendor/etc/audio/audio_policy_configuration.xml bind
+#    mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio_policy_configuration.xml bind
+#    mount none /system/etc/a2dp_audio_policy_configuration.xml /vendor/etc/a2dp_audio_policy_configuration.xml bind
+#    mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
+#    mount none /system/etc/mixer_paths_overlay_static.xml /vendor/etc/mixer_paths_overlay_static.xml bind
+#    mount none /system/etc/mixer_paths_overlay_dynamic.xml /vendor/etc/mixer_paths_overlay_dynamic.xml bind
+#    mount none /system/etc/mixer_paths_tavil.xml /vendor/etc/mixer_paths_tavil.xml bind
 
     mount none /system/lib64/hw/power.qcom.so /vendor/lib64/hw/power.qcom.so bind
 
-    mount none /system/lib64/soundfx/libvolumelistener.so /vendor/lib64/soundfx/libvolumelistener.so bind
-    mount none /system/lib/soundfx/libvolumelistener.so /vendor/lib/soundfx/libvolumelistener.so bind
+#    mount none /system/lib64/soundfx/libvolumelistener.so /vendor/lib64/soundfx/libvolumelistener.so bind
+#    mount none /system/lib/soundfx/libvolumelistener.so /vendor/lib/soundfx/libvolumelistener.so bind
 
     mount none /system/bin/hw/android.hardware.health@2.0-service /vendor/bin/hw/android.hardware.health@2.0-service bind
 
@@ -118,34 +118,15 @@ on late-fs
     # Boot time FS tune
     write /sys/block/dm-3/queue/read_ahead_kb 2048
 
-service vendor.ss_ramdump_local /vendor/bin/subsystem_ramdump
-    class late_start
-    user system
-    group system
-    disabled
-
-on property:init.svc.vendor.cnss_diag=running
-    stop vendor.cnss_diag
-
-on property:init.svc.vendor.ipacm-diag=running
-    stop vendor.ipacm-diag
-
-on property:persist.vendor.sys.ssr.enable_ramdumps=1
-    start vendor.ss_ramdump_local
-
-on property:persist.vendor.sys.ssr.enable_ramdumps=0
-    stop vendor.ss_ramdump
-    stop vendor.ss_ramdump_local
-
 on property:sys.boot_completed=1
     stop vendor.ss_ramdump
 
 # Set the default IRQ affinity to the silver cluster.
     write /proc/irq/default_smp_affinity f
 
-# Runtime fs tuning: as we have init boottime setting and kernel patch setting
-# default readahead to 2048KB. We should adjust the setting upon boot_complete
-# for runtime performance
+    # Runtime FS tuning: as we have init boottime setting and kernel patch setting
+    # default readahead to 2048KB. We should adjust the setting upon boot_complete
+    # for runtime performance
     write /sys/block/sda/queue/read_ahead_kb 128
     write /sys/block/sda/queue/nr_requests 128
     write /sys/block/sda/queue/iostats 1
