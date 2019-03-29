@@ -48,4 +48,18 @@
     <string name="qfp_enable_summary">Activar huella digital</string>
     <string name="hw_0d_disable_title">Desactivar las teclas físicas</string>
     <string name="hw_0d_disable_summary">Desactivar las teclas físicas</string>
+    <string name="snd_headphone_title">Ganancia de los cascos</string>
+    <string name="snd_headphone_summary">+8 dB</string>
+    <string name="snd_earpiece_title">Ganancia de los auriculares</string>
+    <string name="snd_earpiece_summary">+8 dB</string>
+    <string name="snd_mic_title">Ganancia del micrófono</string>
+    <string name="snd_mic_summary">+8 dB</string>
+    <string name="dirac_eq_settings">Ecualizador</string>
+    <string name="dirac_eq_band_0">125 Hz</string>
+    <string name="dirac_eq_band_1">500 Hz</string>
+    <string name="dirac_eq_band_2">1 KHz</string>
+    <string name="dirac_eq_band_3">5 KHz</string>
+    <string name="dirac_eq_band_4">8 KHz</string>
+    <string name="dirac_eq_band_5">12.5 KHz</string>
+    <string name="dirac_eq_band_6">16 KHz</string>
 </resources>
