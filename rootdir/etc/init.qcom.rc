@@ -117,6 +117,11 @@ on property:sys.boot_completed=1
     write /sys/block/sde/queue/scheduler bfq
 
     write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/dm-2/queue/read_ahead_kb 128
+    write /sys/block/dm-3/queue/read_ahead_kb 128
+
+
     write /sys/block/dm-0/queue/nr_requests 128
     write /sys/block/dm-0/queue/iostats 1
     write /sys/block/dm-0/queue/scheduler bfq
@@ -124,6 +129,9 @@ on property:sys.boot_completed=1
     stop vendor.misys@2.0
     stop touchfeature-hal-1-0
     stop perf-hal-1-0
+
+on property:vold.decrypt=trigger_restart_framework
+    restart vendor.audio-hal-2-0
 
 on property:persist.baikal.compander=1
     write /sys/kernel/sound_control/comp "1 0"
@@ -150,5 +158,4 @@ on property:persist.baikal.headphone_gain=0
 
 on property:persist.baikal.headphone_gain=1
     write /sys/kernel/sound_control/headphone_gain "8 8"
-
 
