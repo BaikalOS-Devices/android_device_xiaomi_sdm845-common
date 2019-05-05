@@ -4,10 +4,10 @@ on init
     mount none /system/lib64/hw/power.qcom.so /vendor/lib64/hw/power.qcom.so bind
     mount none /system/lib64/soundfx/libvolumelistener.so /vendor/lib64/soundfx/libvolumelistener.so bind
     mount none /system/lib/soundfx/libvolumelistener.so /vendor/lib/soundfx/libvolumelistener.so bind
-    mount none /system/bin/hw/android.hardware.health@2.0-service /vendor/bin/hw/android.hardware.health@2.0-service bind
-    mount none /dev/null /vendor/etc/init/vendor.qti.hardware.perf@1.0-service.rc bind
 
-    # Boot time FS tune
+    mount none /system/bin/hw/android.hardware.health@2.0-service /vendor/bin/hw/android.hardware.health@2.0-service bind
+
+# Boot time FS tune
 #    write /sys/block/sda/queue/iostats 0
 #    write /sys/block/sda/queue/scheduler cfq
 #    write /sys/block/sda/queue/iosched/slice_idle 0
@@ -121,7 +121,9 @@ on property:sys.boot_completed=1
     write /sys/block/dm-0/queue/iostats 1
     write /sys/block/dm-0/queue/scheduler bfq
 
-
+    stop vendor.misys@2.0
+    stop touchfeature-hal-1-0
+    stop perf-hal-1-0
 
 on property:persist.baikal.compander=1
     write /sys/kernel/sound_control/comp "1 0"
