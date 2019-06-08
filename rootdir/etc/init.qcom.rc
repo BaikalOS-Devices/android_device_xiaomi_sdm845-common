@@ -30,6 +30,12 @@ on boot
     chmod 0660 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/hbm_status
 
+    write /proc/sys/kernel/sched_upmigrate 95
+    write /proc/sys/kernel/sched_downmigrate 85
+    write /proc/sys/kernel/sched_group_downmigrate 95
+    write /proc/sys/kernel/sched_group_upmigrate 100
+    write /proc/sys/kernel/sched_walt_rotate_big_tasks 1
+
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
@@ -37,8 +43,6 @@ on boot
     #write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 1
-    write /sys/block/sda/queue/scheduler maple
-    write /sys/block/sdf/queue/scheduler maple
 
 
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
@@ -53,11 +57,34 @@ on boot
     #write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     #write /sys/module/sync/parameters/fsync_enabled 0
 
-    write /sys/block/sda/queue/read_ahead_kb 256
-    write /sys/block/sdf/queue/read_ahead_kb 256
+    write /proc/irq/default_smp_affinity f
 
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 0
-    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 0
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
+    write /sys/block/sda/queue/scheduler bfq
+
+    write /sys/block/sde/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/nr_requests 128
+    write /sys/block/sde/queue/iostats 1
+    write /sys/block/sde/queue/scheduler bfq
+
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-0/queue/nr_requests 128
+    write /sys/block/dm-0/queue/iostats 1
+    write /sys/block/dm-0/queue/scheduler bfq
+
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/nr_requests 128
+    write /sys/block/mmcblk0/queue/iostats 1
+    write /sys/block/mmcblk0/queue/scheduler bfq
+
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/pl 1
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/pl 1
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1209600
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1574400
     # Enable iowait boost to ramp up the CPU on repeated iowait wakeups
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/iowait_boost_enable 1
