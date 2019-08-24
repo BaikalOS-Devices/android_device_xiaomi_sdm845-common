@@ -29,7 +29,15 @@ PRODUCT_PACKAGES += \
     tinymix
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml
+    $(LOCAL_PATH)/audio/audio_output_policy.conf:system/etc/audio_output_policy.conf \
+    $(LOCAL_PATH)/audio/audio/audio_policy_configuration.xml:system/etc/audio/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/a2dp_audio_policy_configuration.xml:system/etc/a2dp_audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/usb_audio_policy_configuration.xml:system/etc/usb_audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_overlay_static.xml:system/etc/mixer_paths_overlay_static.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_overlay_dynamic.xml:system/etc/mixer_paths_overlay_dynamic.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_tavil.xml:system/etc/mixer_paths_tavil.xml 
 
 # Camera
 PRODUCT_PACKAGES += \
