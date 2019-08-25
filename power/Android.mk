@@ -10,6 +10,7 @@ LOCAL_MODULE := android.hardware.power@1.2-service.xiaomi_sdm845
 LOCAL_INIT_RC := android.hardware.power@1.2-service.xiaomi_sdm845.rc
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE_TAGS := optional
+LOCAL_HEADER_LIBRARIES := libhardware_headers
 
 LOCAL_VENDOR_MODULE := true
 
@@ -37,6 +38,10 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libutils \
     libxml2
+
+LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+LOCAL_HEADER_LIBRARIES += libutils_headers
+LOCAL_HEADER_LIBRARIES += libhardware_headers
 
 LOCAL_CFLAGS += -Werror -Wall -Wno-unused-parameter
 LOCAL_CFLAGS += -DINTERACTION_BOOST
