@@ -96,11 +96,6 @@ vendor/bin/hvdcp_opti
 etc/permissions/cneapiclient.xml
 etc/permissions/com.quicinc.cne.xml
 framework/cneapiclient.jar
-framework/com.quicinc.cne.api-V1.0-java.jar
-framework/com.quicinc.cne.api-V1.1-java.jar
-framework/com.quicinc.cne.constants-V1.0-java.jar
-framework/com.quicinc.cne.constants-V2.0-java.jar
-framework/com.quicinc.cne.constants-V2.1-java.jar
 framework/com.quicinc.cne.jar
 -priv-app/CNEService/CNEService.apk
 vendor/bin/cnd
@@ -388,14 +383,10 @@ vendor/lib/hw/vulkan.sdm845.so
 
 # IMS
 -app/uceShimService/uceShimService.apk
-etc/permissions/com.qualcomm.qti.imscmservice.xml
 etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
 etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml
 framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
 framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
-framework/com.qualcomm.qti.uceservice-V2.0-java.jar
-framework/vendor.qti.ims.callinfo-V1.0-java.jar
-framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
 lib64/com.qualcomm.qti.imscmservice@1.0.so
 lib64/com.qualcomm.qti.imscmservice@2.0.so
 lib64/com.qualcomm.qti.imscmservice@2.1.so
