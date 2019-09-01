@@ -259,6 +259,7 @@ static int process_interaction_hint(void* data) {
 
 int power_hint_override(power_hint_t hint, void* data) {
     int ret_val = HINT_NONE;
+    if( ret_val ==  HINT_NONE ) return HINT_HANDLED;
     switch (hint) {
         case POWER_HINT_VIDEO_ENCODE:
             ret_val = process_video_encode_hint(data);
