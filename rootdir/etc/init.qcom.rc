@@ -31,6 +31,9 @@ import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.target.rc
+import /vendor/etc/init/hw/init.qcom.profiles.rc
+import /vendor/etc/init/hw/init.qcom.performance.rc
+import /vendor/etc/init/hw/init.qcom.thermal.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -110,6 +113,10 @@ on post-fs
     setrlimit 8 67108864 67108864
 
     write /dev/ipa 1
+
+    mkdir /cache/logs 0775 system log
+    start persistentLogging
+
 
 on early-boot
     # Set RLIMIT_MEMLOCK to 64MB
@@ -835,3 +842,9 @@ on property:init.svc.vendor.hwcomposer-2-3=restarting
 on property:vold.decrypt=trigger_restart_framework && property:ro.crypto.type=block && property:persist.ppd.fde.config=0
     setprop persist.ppd.fde.config 1
     start ppd
+
+service persistentLogging /system/bin/logcat -r 8192 -n 9 -v threadTime -f /cache/logs/log
+    user system
+    group system log
+    disabled
+

@@ -128,3 +128,11 @@ ro.vendor.audio.soundtrigger.hist.duration=1500
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
+
+
+# BaikalService 
+baikal.eng.perf=1
+baikal.eng.therm=1
+
+# Set SIM2 default ringtone
+ro.config.ringtone=Ring_Synth_04.ogg,Ring_Synth_04.ogg

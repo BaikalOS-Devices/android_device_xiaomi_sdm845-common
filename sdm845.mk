@@ -103,7 +103,8 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio@2.0-impl \
     audio.bluetooth.default \
     libbthost_if \
-    vendor.qti.hardware.bluetooth_audio@2.0.vendor
+    vendor.qti.hardware.bluetooth_audio@2.0.vendor \
+    liba2dpoffload
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -125,6 +126,9 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
+    init.profiles.rc \
+    init.performance.rc \
+    init.thermal.rc \
     ueventd.qcom.rc
 
 # Context Hub
