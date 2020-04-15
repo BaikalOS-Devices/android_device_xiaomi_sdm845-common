@@ -115,7 +115,7 @@ on post-fs
     write /dev/ipa 1
 
     mkdir /cache/logs 0775 system log
-    start persistentLogging
+#    start persistentLogging
 
 
 on early-boot
@@ -843,8 +843,8 @@ on property:vold.decrypt=trigger_restart_framework && property:ro.crypto.type=bl
     setprop persist.ppd.fde.config 1
     start ppd
 
-service persistentLogging /system/bin/logcat -r 8192 -n 9 -v threadTime -f /cache/logs/log
-    user system
-    group system log
-    disabled
+#service persistentLogging /system/bin/logcat -r 8192 -n 9 -v threadTime -f /cache/logs/log
+#    user system
+#    group system log
+#    disabled
 
