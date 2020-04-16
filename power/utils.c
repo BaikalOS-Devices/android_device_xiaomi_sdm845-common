@@ -94,7 +94,7 @@ static void __attribute__((constructor)) initialize(void) {
             ALOGE("Unable to get perf_lock_rel function handle.\n");
         }
 
-        perf_hint = dlsym(qcopt_handle, "perf_hint");
+        perf_hint = NULL; //dlsym(qcopt_handle, "perf_hint");
 
         if (!perf_hint) {
             ALOGE("Unable to get perf_hint function handle.\n");
