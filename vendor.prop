@@ -4,6 +4,7 @@ persist.vendor.audio.button_jack.profile=volume
 persist.vendor.audio.button_jack.switch=0
 persist.vendor.audio.fluence.speaker=true
 persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicecomm=true
 persist.vendor.audio.fluence.voicerec=false
 persist.vendor.audio.ras.enabled=false
 ro.vendor.audio.sdk.fluencetype=fluence
@@ -62,7 +63,7 @@ vendor.audio_hal.period_size=192
 vendor.audio_hal.period_multiplier=3
 vendor.audio.hw.aac.encoder=false
 vendor.audio.noisy.broadcast.delay=600
-vendor.audio.offload.buffer.size.kb=32
+vendor.audio.offload.buffer.size.kb=512
 vendor.audio.offload.gapless.enabled=true
 vendor.audio.offload.multiaac.enable=true
 vendor.audio.offload.multiple.enabled=true
@@ -73,8 +74,10 @@ vendor.audio.parser.ip.buffer.size=262144
 vendor.voice.path.for.pcm.voip=false
 vendor.audio.safx.pbe.enabled=false
 vendor.audio.tunnel.encode=false
+vendor.audio.usb.disable.sidetone=true
 vendor.audio.use.sw.alac.decoder=true
 vendor.audio.use.sw.ape.decoder=true
+vendor.audio.volume.headset.gain.depcal=true
 
 # Bluetooth
 persist.bluetooth.a2dp_offload.disabled=false
@@ -87,6 +90,10 @@ persist.vendor.qcom.bluetooth.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac
 ro.bluetooth.a2dp_offload.supported=true
 vendor.qcom.bluetooth.soc=cherokee
 
+# Ccodec
+debug.stagefright.omx_default_rank.sw-audio=1
+debug.stagefright.omx_default_rank=0
+
 # Display post-processing
 ro.vendor.display.cabl=2
 
@@ -95,11 +102,6 @@ drm.service.enabled=true
 
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
-
-# Graphics
-debug.egl.hw=0
-debug.sf.hw=0
-ro.opengles.version=196610
 
 # IMS
 persist.dbg.volte_avail_ovr=1
@@ -127,12 +129,4 @@ ro.vendor.audio.soundtrigger.training.level=60
 ro.vendor.audio.soundtrigger.hist.duration=1500
 
 # Perf
-ro.vendor.extension_library=libqti-perfd-client.so
-
-
-# BaikalService 
-baikal.eng.perf=1
-baikal.eng.therm=1
-
-# Set SIM2 default ringtone
-ro.config.ringtone=Ring_Synth_04.ogg,Ring_Synth_04.ogg
+# ro.vendor.extension_library=libqti-perfd-client.so
