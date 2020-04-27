@@ -401,7 +401,12 @@ public class DeviceSettings extends PreferenceFragment implements
 
         if (!isAppInstalled(KEY_DEVICE_DOZE_PACKAGE_NAME)) {
             PreferenceCategory displayCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_DISPLAY);
-            displayCategory.removePreference(findPreference(KEY_DEVICE_DOZE));
+            if( displayCategory != null ) {
+                Preference dozePreference = (Preference)findPreference(KEY_DEVICE_DOZE);
+                if( dozePreference != null ) {
+                    displayCategory.removePreference(dozePreference);
+                }
+            }
         }
 
     }
