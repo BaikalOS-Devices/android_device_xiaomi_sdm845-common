@@ -21,6 +21,9 @@ import android.content.Context;
 import android.content.Intent;
 import org.lineageos.settings.device.DiracAudioEnhancerService;
 
+import android.util.Log;
+
+
 public class DiracBootReceiver extends BroadcastReceiver {
 
     private static final String TAG = "DiracBootReceiver";
@@ -28,6 +31,7 @@ public class DiracBootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context ctx, Intent intent) {
         /* Restore the hardware tunable values */
+      Log.e(TAG, "BootReceiver");
       ctx.startService(new Intent(ctx, DiracAudioEnhancerService.class));
     }
 }

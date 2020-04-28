@@ -45,12 +45,16 @@ public class DiracAudioEnhancerUtils
   {
     int i =1;
     int j = 0;
-    j = mAudEnhncr.getMusic();
-    if (i == j)
-    {
-      return true;
-    } else {
-      return false;
+    try {
+        j = mAudEnhncr.getMusic();
+        if (i == j)
+        {
+          return true;
+        } else {
+          return false;
+        }
+    } catch(Exception e) {
+        return false;
     }
   }
 

@@ -3,6 +3,7 @@
     package="org.lineageos.settings.device"
     android:versionCode="3"
     android:versionName="3.0"
+    android:persistent="true"
     android:sharedUserId="android.uid.system" >
 
     <uses-permission android:name="android.permission.DEVICE_POWER" />
@@ -76,7 +77,7 @@
         </service>
 
         <receiver android:name="org.lineageos.settings.device.DiracBootReceiver" android:enabled="true">
-            <intent-filter android:priority="2147483647">
+            <intent-filter android:priority="200">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
