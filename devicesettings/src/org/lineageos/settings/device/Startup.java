@@ -25,7 +25,7 @@ public class Startup extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-        DisplayCalibration.restore(context);
+        XiaomiDisplay.restore(context);
     }
 
 }

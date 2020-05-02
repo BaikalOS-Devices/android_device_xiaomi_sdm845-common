@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="xiaomi_display_listentries">
+    	<item>@string/xiaomi_display_default</item>
+    	<item>@string/xiaomi_display_enhance_1</item>
+    	<item>@string/xiaomi_display_game_hdr_0</item>
+    	<item>@string/xiaomi_display_game_hdr_38</item>
+    	<item>@string/xiaomi_display_game_hdr_41</item>
+     </string-array>
+
+     <string-array name="xiaomi_display_listvalues">
+    	<item>STANDARD 1</item>
+    	<item>ENHANCE 1</item>
+    	<item>GAME_HDR 0</item>
+    	<item>GAME_HDR -38</item>
+    	<item>GAME_HDR 41</item>
+    </string-array>
+
+    	<!-- item>@string/xiaomi_display_adapt_0</item>
+    	<item>@string/xiaomi_display_adapt_1</item -->
+
+    	<!-- item>ADAPT 0</item>
+    	<item>ADAPT 1</item>
+    	<item>ENHANCE 0</item -->
+
+</resources>

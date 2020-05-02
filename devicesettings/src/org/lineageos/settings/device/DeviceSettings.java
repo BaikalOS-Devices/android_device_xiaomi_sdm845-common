@@ -128,12 +128,12 @@ public class DeviceSettings extends PreferenceFragment implements
 
         mContext = getActivity();
 
-        mKcalPref = findPreference("kcal");
+        mKcalPref = findPreference("xiaomi_display");
         if(  mKcalPref != null ) {
             mKcalPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getContext(), DisplayCalibration.class);
+                    Intent intent = new Intent(getContext(), XiaomiDisplay.class);
                     startActivity(intent);
                     return true;
                 }
