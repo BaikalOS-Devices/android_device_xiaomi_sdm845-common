@@ -100,8 +100,8 @@
     <string name="xiaomi_display_default">Standard</string>
     <string name="xiaomi_display_adapt_0">Auto 1</string>
     <string name="xiaomi_display_adapt_1">Auto 2</string>
-    <string name="xiaomi_display_enhance_0">Enhance 1</string>
-    <string name="xiaomi_display_enhance_1">Enhance 2</string>
+    <string name="xiaomi_display_enhance_0">Enhance</string>
+    <string name="xiaomi_display_enhance_1">Enhance</string>
     <string name="xiaomi_display_game_hdr_0">HDR 1</string>
     <string name="xiaomi_display_game_hdr_38">HDR 2</string>
     <string name="xiaomi_display_game_hdr_41">HDR 3</string>
