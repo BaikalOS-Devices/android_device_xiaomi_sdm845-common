@@ -22,5 +22,19 @@
 <resources>
     <!-- Doze: does this device support STATE_DOZE?  -->
     <bool name="doze_display_state_supported">false</bool>
+
+    <!-- Whether or not the notifications should always fade as they are dismissed. -->
+    <bool name="config_fadeNotificationsOnDismiss">true</bool>
+
+    <!-- Whether or not the fade on the notification is based on the amount that it has been swiped
+         off-screen. -->
+    <bool name="config_fadeDependingOnAmountSwiped">true</bool>
+
+    <!-- Whether or not the notification contents should be clipped to any background that is
+         set on the notification container. For example, if this value is true and the background
+         has rounded corners, then the contents will be clipped to those corners. -->
+    <bool name="config_clipNotificationsToOutline">true</bool>
+
+
 </resources>
 
