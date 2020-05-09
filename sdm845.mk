@@ -160,7 +160,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0 \
     vendor.lineage.livedisplay@2.0-service-sdm \
-    vendor.lineage.livedisplay@2.0-service-sysfs
+    vendor.lineage.livedisplay@2.0-service-sysfs \
+    xiaomi-display-feature \
+    xiaomi-fp \
+
 
 
 # DRM
