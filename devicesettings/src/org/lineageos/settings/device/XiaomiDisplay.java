@@ -46,18 +46,21 @@ public class XiaomiDisplay extends PreferenceActivity implements
 
     private static final String XIAOMI_DISPLAY_PROFILE = "xiaomi_display_profile";
     private static final String XIAOMI_PROFILE_AUTO = "xiaomi_profile_auto";
+
     private static final String PREF_XIAOMI_PROFILE = "xiaomi_profile";
-    private static final String PREF_XIAOMI_PROFILE_AUTO = "xiaomi_profile_auto";
+    private static final String PREF_XIAOMI_PROFILE_AUTO = "xiaomi_profile_adapt";
+
     private static final String DEFAULT_XIAOMI_PROFILE = "STANDARD 1";
+    private static final String DEFAULT_XIAOMI_ADAPT_PROFILE = "ADAPT 0";
 
     private boolean mUnsupported = false;
 
     private SharedPreferences mPrefs;
 
     private ListPreference mXiaomiProfilePreference;
-    private SwitchPreference mXiaomiProfileAutoPreference;
+    //private ListPreference mXiaomiProfileAutoPreference;
     private static String mXiaomiProfile;
-    private static Boolean mXiaomiProfileAuto;
+    //private static String mXiaomiProfileAuto;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,8 +70,6 @@ public class XiaomiDisplay extends PreferenceActivity implements
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        mXiaomiProfile = mPrefs.getString(PREF_XIAOMI_PROFILE,DEFAULT_XIAOMI_PROFILE);
-        Log.d(TAG, "onCreate() profile=" + mXiaomiProfile);
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.xiaomi_display);
@@ -78,19 +79,22 @@ public class XiaomiDisplay extends PreferenceActivity implements
 
         addPreferencesFromResource(R.xml.xiaomi_display);
 
+        mXiaomiProfile = mPrefs.getString(PREF_XIAOMI_PROFILE,DEFAULT_XIAOMI_PROFILE);
+        Log.d(TAG, "onCreate() profile=" + mXiaomiProfile);
         mXiaomiProfilePreference = (ListPreference) findPreference(XIAOMI_DISPLAY_PROFILE);
         if( mXiaomiProfilePreference == null ) {  
             Log.d(TAG, "onCreate() mXiaomiProfilePreference=null");
             mUnsupported = true;
             return;
         }
-
         mXiaomiProfilePreference.setValue(mXiaomiProfile);
         mXiaomiProfilePreference.setOnPreferenceChangeListener(this);
 
-        mXiaomiProfileAutoPreference = (SwitchPreference) findPreference(XIAOMI_PROFILE_AUTO);
-        mXiaomiProfileAutoPreference.setChecked(mPrefs.getBoolean(PREF_XIAOMI_PROFILE_AUTO, false));
-        mXiaomiProfileAutoPreference.setOnPreferenceChangeListener(this);
+
+        /*mXiaomiProfileAuto = mPrefs.getString(PREF_XIAOMI_PROFILE_AUTO,DEFAULT_XIAOMI_ADAPT_PROFILE);
+        mXiaomiProfileAutoPreference = (ListPreference) findPreference(XIAOMI_PROFILE_AUTO);
+        mXiaomiProfileAutoPreference.setValue(mXiaomiProfileAuto);
+        mXiaomiProfileAutoPreference.setOnPreferenceChangeListener(this);*/
 
 
     }
@@ -101,19 +105,16 @@ public class XiaomiDisplay extends PreferenceActivity implements
 
     public static void restore(Context context) {
         try {
-            String profile = PreferenceManager
-                .getDefaultSharedPreferences(context).getString(XiaomiDisplay.PREF_XIAOMI_PROFILE, DEFAULT_XIAOMI_PROFILE);
+            //String profile = PreferenceManager
+            //    .getDefaultSharedPreferences(context).getString(XiaomiDisplay.PREF_XIAOMI_PROFILE, DEFAULT_XIAOMI_PROFILE);
 
-            runCommand("display" + " " + profile);
+            //runCommand("display" + " " + profile);
 
-            Boolean profileAuto = PreferenceManager
-                .getDefaultSharedPreferences(context).getBoolean(XiaomiDisplay.PREF_XIAOMI_PROFILE_AUTO, false);
+            //String profileAuto = PreferenceManager
+            //    .getDefaultSharedPreferences(context).getString(XiaomiDisplay.PREF_XIAOMI_PROFILE_AUTO, DEFAULT_XIAOMI_ADAPT_PROFILE);
 
-            if( profileAuto ) {
-                runCommand("display" + " " + "ADAPT 2");
-            } else {
-                runCommand("display" + " " + "ADAPT 0");
-            }
+            //runCommand("display" + " " + profileAuto);
+
         } catch(Exception e) {
         }
     }
@@ -128,24 +129,20 @@ public class XiaomiDisplay extends PreferenceActivity implements
                 setCurrentProfile();
             } catch(Exception e) {
             }
-        } else if (preference == mXiaomiProfileAutoPreference) {
+        } /*else if (preference == mXiaomiProfileAutoPreference) {
             try {
-                mXiaomiProfileAuto = (Boolean) newValue;
-                mPrefs.edit().putBoolean(PREF_XIAOMI_PROFILE_AUTO, mXiaomiProfileAuto).commit();
+                mXiaomiProfileAuto = newValue.toString();
+                mPrefs.edit().putString(PREF_XIAOMI_PROFILE_AUTO, mXiaomiProfileAuto).commit();
                 setCurrentProfile();
             } catch(Exception e) {
             }
-        }
+        }*/
         return true;
     }
 
     private static void setCurrentProfile() {
-        runCommand("display" + " " + mXiaomiProfile);
-        if( mXiaomiProfileAuto ) {
-            runCommand("display" + " " + "ADAPT 2");
-        } else {
-            runCommand("display" + " " + "ADAPT 0");
-        }
+        //runCommand("display" + " " + mXiaomiProfile);
+        //runCommand("display" + " " + mXiaomiProfileAuto);
     }
 
     private static void runCommand(String command) {

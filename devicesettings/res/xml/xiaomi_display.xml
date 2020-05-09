@@ -15,19 +15,27 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ListPreference
+    <!-- ListPreference
         android:key="xiaomi_display_profile"
         android:title="@string/xiaomi_display_profile_title"
         android:entries="@array/xiaomi_display_listentries"
         android:entryValues="@array/xiaomi_display_listvalues"
-        android:defaultValue="default"
-        android:summary="%s" />
+        android:defaultValue="STANDARD 1"
+        android:summary="%s" / -->
+
+    <!--ListPreference
+   	    android:key="xiaomi_profile_auto"
+        android:title="@string/xiaomi_profile_auto_title"
+        android:entries="@array/xiaomi_display_adapt_listentries"
+        android:entryValues="@array/xiaomi_display_adapt_listvalues"
+        android:defaultValue="ADAPT 0"
+        android:summary="%s" / -->
 
 
-    <SwitchPreference
+    <!-- SwitchPreference
    	    android:key="xiaomi_profile_auto"
         android:title="@string/xiaomi_profile_auto_title"
         android:summary="@string/xiaomi_profile_auto_summary"
-        android:persistent="false" />
+        android:persistent="false" / -->
 
 </PreferenceScreen>

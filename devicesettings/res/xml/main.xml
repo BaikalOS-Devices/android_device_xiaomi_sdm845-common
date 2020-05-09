@@ -20,11 +20,11 @@
     <PreferenceCategory
         android:key="display"
         android:title="@string/display_title">
-        <Preference
+        <!-- Preference
                  android:key="xiaomi_display"
                  android:fragment="org.lineageos.settings.device.XiaomiDisplay"
                  android:summary="@string/xiaomi_display_summary"
-                 android:title="@string/xiaomi_display_title" />
+                 android:title="@string/xiaomi_display_title" / -->
         <Preference
             android:key="device_doze"
             android:persistent="false"

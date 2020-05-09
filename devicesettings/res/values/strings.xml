@@ -97,14 +97,16 @@
     <string name="xiaomi_profile_auto_title">Auto correction</string>
     <string name="xiaomi_profile_auto_summary">Automatically correct colors based on ambient lighting conditions</string>
 
-    <string name="xiaomi_display_default">Standard</string>
-    <string name="xiaomi_display_adapt_0">Auto 1</string>
-    <string name="xiaomi_display_adapt_1">Auto 2</string>
-    <string name="xiaomi_display_enhance_0">Enhance</string>
-    <string name="xiaomi_display_enhance_1">Enhance</string>
+    <string name="xiaomi_display_auto">Auto</string>
+    <string name="xiaomi_display_standard">Standard</string>
+    <string name="xiaomi_display_enhance">Enhance</string>
     <string name="xiaomi_display_game_hdr_0">HDR 1</string>
     <string name="xiaomi_display_game_hdr_38">HDR 2</string>
     <string name="xiaomi_display_game_hdr_41">HDR 3</string>
 
+    <string name="xiaomi_display_adapt_standard">Standard</string>
+    <string name="xiaomi_display_adapt_warm">Warm</string>
+    <string name="xiaomi_display_adapt_cool">Cool</string>
+    <string name="xiaomi_display_adapt_auto">Auto</string>
 
 </resources>
