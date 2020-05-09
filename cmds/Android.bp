@@ -1,0 +1,26 @@
+cc_binary {
+	name: "xiaomi-display-feature",
+    vendor: true,
+	srcs: [
+		"xiaomi-display-feature.cpp",
+	],
+	shared_libs: [
+		"vendor.xiaomi.hardware.displayfeature@1.0",
+		"libutils",
+		"libhidlbase",
+	],
+}
+
+cc_binary {
+	name: "xiaomi-fp",
+    vendor: true,
+	srcs: [
+		"xiaomi-fp.cpp",
+	],
+	shared_libs: [
+		"vendor.xiaomi.hardware.fingerprintextension@1.0",
+		"libutils",
+		"libhidlbase",
+	],
+}
+
