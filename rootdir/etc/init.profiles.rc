@@ -32,12 +32,26 @@ on property:baikal.perf.profile=reader
 on property:baikal.perf.profile=reader
     setprop "baikal.eng.perf.profile" "battery"
 
+on property:persist.baikal.perf.scr_off=*
+    setprop "baikal.eng.perf.scr_off" ${persist.baikal.perf.scr_off:-"battery"}
+
+on property:baikal.eng.perf.scr_off=default
+    setprop "baikal.eng.perf.scr_off" ${persist.baikal.perf.default:-"balance"}
+
 on property:baikal.perf.profile=screen_off
-    setprop "baikal.eng.perf.profile" "battery"
+    setprop "baikal.eng.perf.profile" ${baikal.eng.perf.scr_off:-"battery"}
+
+on property:persist.baikal.perf.idle=*
+    setprop "baikal.eng.perf.idle" ${persist.baikal.perf.idle:-"battery"}
+
+on property:baikal.eng.perf.idle=default
+    setprop "baikal.eng.perf.idle" ${persist.baikal.perf.default:-"balance"}
 
 on property:baikal.perf.profile=idle
-    setprop "baikal.eng.perf.profile" "battery"
+    setprop "baikal.eng.perf.profile" ${baikal.eng.perf.idle:-"battery"}
 
+on property:baikal.eng.perf.profile=boost
+    setprop "baikal.eng.perf.profile" "balance"
 
 #Thermal framework to device map
 
