@@ -130,3 +130,21 @@ ro.vendor.audio.soundtrigger.hist.duration=1500
 
 # Perf
 # ro.vendor.extension_library=libqti-perfd-client.so
+
+#camera
+persist.vendor.camera.enableAdvanceFeatures=0x247
+persist.vendor.camera.multicam.fpsmatch=TRUE
+persist.vendor.camera.multicam.framesync=1
+persist.vendor.camera.multicam.hwsync=TRUE
+camera.irled.brightness=72
+
+#haptic
+sys.haptic.down.normal=8
+sys.haptic.down.strong=13
+sys.haptic.down.weak=3
+sys.haptic.runin=13
+
+#wlan
+ro.wlan.chip=39xx
+ro.wlan.mimo=1
+ro.wlan.vendor=qcom
