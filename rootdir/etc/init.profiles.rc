@@ -114,10 +114,18 @@ on property:baikal.therm.profile=vr
     setprop "baikal.eng.perf.profile" "temporary"
     setprop "baikal.eng.therm.profile" "vr"
 
-on property:baikal.therm.profile=idle
-    setprop "baikal.eng.perf.profile" "temporary"
-    setprop "baikal.eng.therm.profile" "cool"
-
 on property:baikal.therm.profile=screen_off
     setprop "baikal.eng.perf.profile" "temporary"
-    setprop "baikal.eng.therm.profile" "cool"
+    setprop "baikal.eng.therm.profile" ${baikal.eng.therm.idle:-"cool"}
+
+on property:persist.baikal.therm.idle=*
+    setprop "baikal.eng.therm.profile" "temporary"
+    setprop "baikal.eng.therm.idle" ${persist.baikal.therm.idle:-"cool"}
+
+on property:baikal.eng.therm.idle=default
+    setprop "baikal.eng.therm.profile" "temporary"
+    setprop "baikal.eng.therm.idle" ${persist.baikal.therm.default:-"cool"}
+
+on property:baikal.therm.profile=idle
+    setprop "baikal.eng.therm.profile" "temporary"
+    setprop "baikal.eng.therm.profile" ${baikal.eng.therm.idle:-"cool"}
