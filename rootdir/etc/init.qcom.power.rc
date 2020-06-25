@@ -111,13 +111,21 @@ on enable-low-power
     # to one of the CPU from the default IRQ affinity mask.
     write /proc/irq/default_smp_affinity "f"
 
-    # Core control parameters
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
-    write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
-    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres "50 50 50 50"
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres "60 60 60 60"
+
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres "60 60 60 60"
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres "70 70 70 70"
+
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_multiplier 10
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/scaling_divider 10
+
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_multiplier 10
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/scaling_divider 10
+
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_upmigrate 95
@@ -129,14 +137,14 @@ on enable-low-power
     # Configure governor settings for little cluster
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/rate_limit_us 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1209600
+    #write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1209600
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/pl 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 576000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
 
     # Configure governor settings for big cluster
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/rate_limit_us 0
-    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1574400
+    #write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1574400
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/pl 1
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800"
     write /sys/module/cpu_boost/parameters/input_boost_ms 120
@@ -144,8 +152,8 @@ on enable-low-power
     # Limit the min frequency to 825MHz
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825000
 
-    # Enable oom_reaper
-    write /sys/module/lowmemorykiller/parameters/oom_reaper 1
+    # Disable oom_reaper
+    write /sys/module/lowmemorykiller/parameters/oom_reaper 0
 
     # Enable bus-dcvs
     write /sys/class/devfreq/soc:qcom,cpubw/governor "bw_hwmon"

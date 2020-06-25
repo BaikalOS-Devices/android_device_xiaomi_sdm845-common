@@ -1,7 +1,6 @@
-on boot
+on property:vendor.post_boot.parsed=*
     setprop "baikal.perf.profile" "default"
     setprop "baikal.therm.profile" "default"
-
 
 #Perfroamnce framework to device map
 on property:persist.baikal.perf.default=*

@@ -1,9 +1,3 @@
-on boot
-    setprop "baikal.eng.therm.profile" "default"
-
-on property:baikal.eng.therm.profile=default
-    setprop "baikal.eng.therm.profile" "balance"
-
 # Balance (default profile)
 on property:baikal.eng.therm.profile=balance
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845.conf"
