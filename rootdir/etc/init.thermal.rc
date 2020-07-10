@@ -35,6 +35,15 @@ on property:baikal.eng.therm.profile=cool
     write /sys/class/thermal/thermal_zone33/trip_point_0_temp 60000
     setprop "baikal.eng.therm.cur_profile" "cool"
 
+# Cold
+on property:baikal.eng.therm.profile=cold
+    setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-cold.conf"
+    stop vendor.thermal-engine
+    start vendor.thermal-engine
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 50000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 55000
+    setprop "baikal.eng.therm.cur_profile" "cold"
+
 # Phone
 on property:baikal.eng.therm.profile=incall
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-cool.conf"

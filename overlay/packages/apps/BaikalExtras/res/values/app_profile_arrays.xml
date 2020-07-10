@@ -25,6 +25,7 @@
     	<item>@string/thermal_nolimits</item>
     	<item>@string/thermal_high</item>
     	<item>@string/thermal_cool</item>
+    	<item>@string/thermal_cold</item>
     	<item>@string/thermal_camera</item>
     	<item>@string/thermal_incall</item>
     	<item>@string/thermal_vr</item>
@@ -37,6 +38,7 @@
     	<item>nolimits</item>
     	<item>high</item>
     	<item>cool</item>
+    	<item>cold</item>
     	<item>camera</item>
     	<item>incall</item>
     	<item>vr</item>
