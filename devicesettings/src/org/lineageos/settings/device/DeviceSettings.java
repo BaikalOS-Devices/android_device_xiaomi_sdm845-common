@@ -48,6 +48,7 @@ import androidx.preference.TwoStatePreference;
 import java.util.Arrays;
 
 import org.lineageos.settings.device.utils.EQSeekBarPreference;
+import org.lineageos.settings.device.utils.FileUtils;
 
 public class DeviceSettings extends PreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -59,6 +60,8 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String SYSTEM_PROPERTY_SND_MIC = "persist.baikal.mic_gain";
     private static final String SYSTEM_PROPERTY_SND_EARPIECE = "persist.baikal.earpiece_gain";
     private static final String SYSTEM_PROPERTY_SND_HP = "persist.baikal.headphone_gain";
+
+    private static final String SYSTEM_PROPERTY_NVT_FW = "persist.baikalos.nvt_fw";
 
     private static final String KEY_SND_COMP = "snd_comp";    
     private static final String KEY_SND_MIC = "snd_mic";    
@@ -85,6 +88,8 @@ public class DeviceSettings extends PreferenceFragment implements
 
 
     private Preference mKcalPref;
+
+    private SwitchPreference mNvtFw;
 
     private SwitchPreference mSndComp;
     private SwitchPreference mSndMic;
@@ -372,6 +377,16 @@ public class DeviceSettings extends PreferenceFragment implements
         });
 
 
+        mNvtFw = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_FW);
+        if( mNvtFw != null ) {
+
+            if( !FileUtils.fileExists("/sys/module/nt36xxx/parameters/fw_variant") ) {
+                mNvtFw.setVisible(false);
+            } else {
+                mNvtFw.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_NVT_FW, false));
+                mNvtFw.setOnPreferenceChangeListener(this);
+            }
+        }
 
 
         mSndComp = (SwitchPreference) findPreference(SYSTEM_PROPERTY_SND_COMP);

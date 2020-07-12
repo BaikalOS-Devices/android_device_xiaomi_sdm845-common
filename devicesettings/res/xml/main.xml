@@ -33,6 +33,13 @@
                  android:targetPackage="org.lineageos.settings.doze"
                  android:targetClass="org.lineageos.settings.doze.DozeSettingsActivity"/>
         </Preference>
+
+    	<SwitchPreference
+    	    android:key="persist.baikalos.nvt_fw"
+    	    android:title="@string/nvt_fw_title"
+    	    android:summary="@string/nvt_fw_summary"
+    	    android:persistent="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

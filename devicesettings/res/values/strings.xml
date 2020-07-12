@@ -72,6 +72,9 @@
 
     <string name="sound_settings">Sound settings</string>
 
+    <string name="nvt_fw_title">Novatek FW 2</string>
+    <string name="nvt_fw_summary">Use alternative version of Novatek firmware for touch panel</string>
+
     <string name="snd_compander_title">Disable Compander</string>
     <string name="snd_compander_summary">Disable Compander for wired headphones for better sound quality</string>
     <string name="snd_headphone_title">Headphone Gain</string>
