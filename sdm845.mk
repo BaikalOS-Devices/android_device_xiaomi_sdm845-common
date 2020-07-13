@@ -105,7 +105,14 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default \
     libbthost_if \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
-    liba2dpoffload
+    liba2dpoffload 
+
+PRODUCT_PACKAGES += BluetoothExt
+PRODUCT_PACKAGES += libbtconfigstore
+PRODUCT_PACKAGES += vendor.qti.hardware.btconfigstore@1.0
+PRODUCT_PACKAGES += com.qualcomm.qti.bluetooth_audio@1.0
+PRODUCT_PACKAGES += vendor.qti.hardware.bluetooth_audio@2.0
+
 
 # Camera
 PRODUCT_PACKAGES += \
