@@ -49,7 +49,7 @@ on property:baikal.eng.therm.profile=incall
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-cool.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 45000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 50000
     write /sys/class/thermal/thermal_zone33/trip_point_0_temp 55000
     setprop "baikal.eng.therm.cur_profile" "incall"
 
@@ -58,8 +58,8 @@ on property:baikal.eng.therm.profile=gaming
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-tgame.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 80000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 90000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 85000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 95000
     setprop "baikal.eng.therm.cur_profile" "gaming"
 
 # Gaming 2
@@ -68,7 +68,7 @@ on property:baikal.eng.therm.profile=gaming2
     stop vendor.thermal-engine
     start vendor.thermal-engine
     write /sys/class/thermal/thermal_zone34/trip_point_0_temp 85000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 90000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 95000
     setprop "baikal.eng.therm.cur_profile" "gaming2"
 
 # Camera
