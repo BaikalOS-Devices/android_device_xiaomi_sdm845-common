@@ -1,6 +1,15 @@
 # Balance (default profile)
 on property:baikal.eng.perf.profile=balance
 
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
+
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
@@ -9,6 +18,9 @@ on property:baikal.eng.perf.profile=balance
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 1228800
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1536000
 
     #write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1228800
     #write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1536000
@@ -80,9 +92,35 @@ on property:baikal.eng.perf.profile=balance
     write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
 
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
+
+    write /dev/cpuset/top-app/cpus "0-7"
+    write /dev/cpuset/audio-app/cpus "2-5"
+    write /dev/cpuset/foreground/cpus "0-3"
+    write /dev/cpuset/foreground/boost/cpus "0-3,4"
+    write /dev/cpuset/background/cpus "0-3"
+    write /dev/cpuset/system-background/cpus "0-3"
+
+
 # Performance (based on DrunkSauce Lite)
 on property:baikal.eng.perf.profile=performance
     setprop "baikal.eng.perf.cur_profile" "performance"
+
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
 
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
@@ -91,6 +129,9 @@ on property:baikal.eng.perf.profile=performance
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
     #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 902400
     #write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1286400
+
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 2803200
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1766400
 
     #write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1766400
     #write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 2803200
@@ -156,9 +197,34 @@ on property:baikal.eng.perf.profile=performance
     write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
 
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
+
+    write /dev/cpuset/top-app/cpus "0-7"
+    write /dev/cpuset/audio-app/cpus "0-7"
+    write /dev/cpuset/foreground/cpus "0-7"
+    write /dev/cpuset/foreground/boost/cpus "0-7"
+    write /dev/cpuset/background/cpus "0-7"
+    write /dev/cpuset/system-background/cpus "0-7"
+
 # Battery
 on property:baikal.eng.perf.profile=battery
     setprop "baikal.eng.perf.cur_profile" "battery"
+
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
 
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
@@ -167,6 +233,9 @@ on property:baikal.eng.perf.profile=battery
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1056000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 902400
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1056000
 
     #write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1228800
     #write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 1056000
@@ -238,9 +307,35 @@ on property:baikal.eng.perf.profile=battery
     write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
 
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+
+    write /dev/cpuset/top-app/cpus "0-1,4"
+    write /dev/cpuset/audio-app/cpus "1,4"
+    write /dev/cpuset/foreground/cpus "0-1"
+    write /dev/cpuset/foreground/boost/cpus "0-1,4"
+    write /dev/cpuset/background/cpus "0-1"
+    write /dev/cpuset/system-background/cpus "0-1"
+
+
 # Gaming
 on property:baikal.eng.perf.profile=gaming
     setprop "baikal.eng.perf.cur_profile" "gaming"
+
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
 
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
@@ -249,6 +344,9 @@ on property:baikal.eng.perf.profile=gaming
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
     #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1228800
     #write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1536000
+
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 2803200
+    write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1766400
 
     #write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1766400
     #write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/hispeed_freq 2803200
@@ -313,3 +411,18 @@ on property:baikal.eng.perf.profile=gaming
     write /proc/sys/vm/vfs_cache_pressure 100
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
 
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu4/online 1
+    write /sys/devices/system/cpu/cpu5/online 1
+    write /sys/devices/system/cpu/cpu6/online 1
+    write /sys/devices/system/cpu/cpu7/online 1
+
+    write /dev/cpuset/top-app/cpus "0-7"
+    write /dev/cpuset/audio-app/cpus "0-7"
+    write /dev/cpuset/foreground/cpus "0-7"
+    write /dev/cpuset/foreground/boost/cpus "0-7"
+    write /dev/cpuset/background/cpus "0-7"
+    write /dev/cpuset/system-background/cpus "0-7"
