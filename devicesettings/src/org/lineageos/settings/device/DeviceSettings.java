@@ -380,7 +380,7 @@ public class DeviceSettings extends PreferenceFragment implements
         mNvtFw = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_FW);
         if( mNvtFw != null ) {
 
-            if( !FileUtils.fileExists("/sys/module/nt36xxx/parameters/fw_variant") ) {
+            if( !FileUtils.fileExists("/sys/devices/platform/soc/a98000.i2c/i2c-3/3-0062/fw_variant") ) {
                 mNvtFw.setVisible(false);
             } else {
                 mNvtFw.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_NVT_FW, false));
