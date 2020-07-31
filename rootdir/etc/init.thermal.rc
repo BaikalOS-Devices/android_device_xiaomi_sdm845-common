@@ -3,8 +3,8 @@ on property:baikal.eng.therm.profile=balance
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 75000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 80000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 85000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 90000
     setprop "baikal.eng.therm.cur_profile" "balance"
 
 # High
@@ -12,8 +12,8 @@ on property:baikal.eng.therm.profile=high
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-high.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 90000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 95000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 95000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 100000
     setprop "baikal.eng.therm.cur_profile" "high"
 
 
@@ -22,8 +22,8 @@ on property:baikal.eng.therm.profile=nolimits
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-nolimits.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 90000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 95000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 100000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 115000
     setprop "baikal.eng.therm.cur_profile" "nolimits"
 
 # Cool
@@ -31,8 +31,8 @@ on property:baikal.eng.therm.profile=cool
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-cool.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 50000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 60000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 60000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 65000
     setprop "baikal.eng.therm.cur_profile" "cool"
 
 # Cold
@@ -40,8 +40,8 @@ on property:baikal.eng.therm.profile=cold
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-cold.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 50000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 55000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 55000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 60000
     setprop "baikal.eng.therm.cur_profile" "cold"
 
 # Phone
@@ -58,8 +58,8 @@ on property:baikal.eng.therm.profile=gaming
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-tgame.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 90000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 95000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 95000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 100000
     setprop "baikal.eng.therm.cur_profile" "gaming"
 
 # Gaming 2
@@ -67,8 +67,8 @@ on property:baikal.eng.therm.profile=gaming2
     setprop sys.qcom.thermalcfg "/vendor/etc/thermal-engine-sdm845-tgame2.conf"
     stop vendor.thermal-engine
     start vendor.thermal-engine
-    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 90000
-    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 95000
+    write /sys/class/thermal/thermal_zone34/trip_point_0_temp 100000
+    write /sys/class/thermal/thermal_zone33/trip_point_0_temp 115000
     setprop "baikal.eng.therm.cur_profile" "gaming2"
 
 # Camera
