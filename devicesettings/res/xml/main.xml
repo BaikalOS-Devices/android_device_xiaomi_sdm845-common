@@ -34,11 +34,23 @@
                  android:targetClass="org.lineageos.settings.doze.DozeSettingsActivity"/>
         </Preference>
 
-    	<SwitchPreference
-    	    android:key="persist.baikalos.nvt_fw"
-    	    android:title="@string/nvt_fw_title"
-    	    android:summary="@string/nvt_fw_summary"
-    	    android:persistent="false" />
+        <PreferenceCategory
+            android:key="nvt_panel"
+            android:title="@string/nvt_panel_title">
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.nvt_fw"
+        	    android:title="@string/nvt_fw_title"
+        	    android:summary="@string/nvt_fw_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.nvt_esd"
+        	    android:title="@string/nvt_esd_title"
+        	    android:summary="@string/nvt_esd_summary"
+        	    android:persistent="false" />
+
+        </PreferenceCategory>
 
     </PreferenceCategory>
 

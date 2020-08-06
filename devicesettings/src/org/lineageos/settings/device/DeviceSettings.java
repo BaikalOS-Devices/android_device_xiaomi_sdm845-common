@@ -55,6 +55,7 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private static final String KEY_CATEGORY_DISPLAY = "display";
     private static final String KEY_CATEGORY_CAMERA = "camera_pref";
+    private static final String KEY_CATEGORY_NVT = "nvt_panel";
 
     private static final String SYSTEM_PROPERTY_SND_COMP = "persist.baikal.compander";
     private static final String SYSTEM_PROPERTY_SND_MIC = "persist.baikal.mic_gain";
@@ -62,6 +63,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String SYSTEM_PROPERTY_SND_HP = "persist.baikal.headphone_gain";
 
     private static final String SYSTEM_PROPERTY_NVT_FW = "persist.baikalos.nvt_fw";
+    private static final String SYSTEM_PROPERTY_NVT_ESD = "persist.baikalos.nvt_esd";
 
     private static final String KEY_SND_COMP = "snd_comp";    
     private static final String KEY_SND_MIC = "snd_mic";    
@@ -90,6 +92,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private Preference mKcalPref;
 
     private SwitchPreference mNvtFw;
+    private SwitchPreference mNvtESD;
 
     private SwitchPreference mSndComp;
     private SwitchPreference mSndMic;
@@ -97,6 +100,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private SwitchPreference mSndHP;
 
     private PreferenceCategory mEqCategory;
+    private PreferenceCategory mNvtCategory;
 
 
     private EQSeekBarPreference mEqBand0;
@@ -377,14 +381,19 @@ public class DeviceSettings extends PreferenceFragment implements
         });
 
 
-        mNvtFw = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_FW);
-        if( mNvtFw != null ) {
+        mNvtCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_NVT);
+
+        if( mNvtCategory != null ) {
 
             if( !FileUtils.fileExists("/sys/devices/platform/soc/a98000.i2c/i2c-3/3-0062/fw_variant") ) {
-                mNvtFw.setVisible(false);
+                mNvtCategory.setVisible(false);
             } else {
+                mNvtFw = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_FW);
                 mNvtFw.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_NVT_FW, false));
                 mNvtFw.setOnPreferenceChangeListener(this);
+                mNvtESD = (SwitchPreference) findPreference(SYSTEM_PROPERTY_NVT_ESD);
+                mNvtESD.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_NVT_ESD, false));
+                mNvtESD.setOnPreferenceChangeListener(this);
             }
         }
 

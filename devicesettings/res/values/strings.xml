@@ -72,8 +72,13 @@
 
     <string name="sound_settings">Sound settings</string>
 
-    <string name="nvt_fw_title">Novatek FW 2</string>
+    <string name="nvt_panel_title">Novatek Touch Panel</string>
+
+    <string name="nvt_fw_title">Firmware 9.1.24</string>
     <string name="nvt_fw_summary">Use alternative version of Novatek firmware for touch panel</string>
+
+    <string name="nvt_esd_title">ESD protection</string>
+    <string name="nvt_esd_summary">Enable ESD protection feature</string>
 
     <string name="snd_compander_title">Disable Compander</string>
     <string name="snd_compander_summary">Disable Compander for wired headphones for better sound quality</string>
