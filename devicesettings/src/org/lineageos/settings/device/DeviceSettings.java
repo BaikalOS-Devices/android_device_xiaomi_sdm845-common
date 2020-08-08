@@ -75,6 +75,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_DIRAC_MOVIE_MODE = "dirac_mode";
     private static final String KEY_DIRAC_PRESET = "dirac_preset";
 
+    private static final String KEY_DIRAC_CATEGORY = "dirac_settings";
 
 
     private static final String KEY_DIRAC_EQ_BAND="dirac_eq_band_";
@@ -101,6 +102,7 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private PreferenceCategory mEqCategory;
     private PreferenceCategory mNvtCategory;
+    private PreferenceCategory mDiracCategory;
 
 
     private EQSeekBarPreference mEqBand0;
@@ -150,16 +152,22 @@ public class DeviceSettings extends PreferenceFragment implements
         }
 
 
-        mDiracEnableDisable = (TwoStatePreference) findPreference(KEY_DIRAC_SOUND_ENHANCER);
-
+        mDiracCategory = (PreferenceCategory) findPreference(KEY_DIRAC_CATEGORY);
 
         if (DiracAudioEnhancerService.du == null ) {
             mContext.startService(new Intent(mContext, DiracAudioEnhancerService.class));
         }
 
+        if( DiracAudioEnhancerService.du == null || !DiracAudioEnhancerService.du.hasInitialized() ) {
+            mDiracCategory.setVisible(false);
+        } else {
+
+        mDiracEnableDisable = (TwoStatePreference) findPreference(KEY_DIRAC_SOUND_ENHANCER);
+
         if (DiracAudioEnhancerService.du != null && DiracAudioEnhancerService.du.hasInitialized()) {
           mDiracEnableDisable.setChecked(DiracAudioEnhancerService.du.isEnabled(mContext) ? true:false);
         }
+
         mDiracEnableDisable.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
           public boolean onPreferenceChange(Preference preference, Object newValue) {
             //if(((TwoStatePreference) preference).isChecked() != (Boolean) newValue) {
@@ -379,6 +387,8 @@ public class DeviceSettings extends PreferenceFragment implements
             return true;
           }
         });
+
+        }
 
 
         mNvtCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_NVT);

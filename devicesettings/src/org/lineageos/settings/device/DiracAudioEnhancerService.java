@@ -18,8 +18,12 @@ public class DiracAudioEnhancerService extends Service {
    @Override
    public int onStartCommand(Intent intent, int flags, int startId) {
       // Let it continue running until it is stopped.
-      du = new DiracAudioEnhancerUtils();
-      du.initialize();
+      try {
+        du = new DiracAudioEnhancerUtils();
+        du.initialize();
+      } catch(Exception e) {
+        du = null;
+      }
       //Toast.makeText(this, "Audio Enhancer Started", Toast.LENGTH_LONG).show();
       return START_STICKY;
    }
