@@ -29,7 +29,6 @@ public class DiracAudioEnhancerUtils
     int iEnabled;
     if (!mInitialized)
     {
-      mInitialized = true;
       mAudEnhncr = new DiracAudioEnhancer(0, 0);
       iEnabled = mAudEnhncr.getMusic();
       if (iEnabled == 1) {
@@ -38,6 +37,7 @@ public class DiracAudioEnhancerUtils
         enabled = false;
       }
       mAudEnhncr.setEnabled(enabled);
+      mInitialized = true;
     }
   }
 

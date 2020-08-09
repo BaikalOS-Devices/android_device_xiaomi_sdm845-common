@@ -156,6 +156,10 @@ public class DeviceSettings extends PreferenceFragment implements
 
         if (DiracAudioEnhancerService.du == null ) {
             mContext.startService(new Intent(mContext, DiracAudioEnhancerService.class));
+            try {
+                Thread.sleep(1000);
+            } catch(Exception etm) {
+            }
         }
 
         if( DiracAudioEnhancerService.du == null || !DiracAudioEnhancerService.du.hasInitialized() ) {
