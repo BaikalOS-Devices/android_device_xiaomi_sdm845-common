@@ -134,6 +134,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
+    init.custom.rc \
     init.profiles.rc \
     init.performance.rc \
     init.thermal.rc \
