@@ -31,9 +31,7 @@ import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.msm.usb.configfs.rc
 import /vendor/etc/init/hw/init.target.rc
-import /vendor/etc/init/hw/init.profiles.rc
-import /vendor/etc/init/hw/init.performance.rc
-import /vendor/etc/init/hw/init.thermal.rc
+import /vendor/etc/init/hw/init.custom.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -53,7 +51,7 @@ on early-init
 on init
     # Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
-    write /sys/fs/cgroup/memory/bg/memory.swappiness 140
+    write /sys/fs/cgroup/memory/bg/memory.swappiness 40
     write /sys/fs/cgroup/memory/bg/memory.move_charge_at_immigrate 1
     chown root system /sys/fs/cgroup/memory/bg/tasks
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
@@ -101,6 +99,8 @@ on fs
     chown system system /mnt/vendor/persist/rfs/msm/mpss/server_check.txt
     chown system system /mnt/vendor/persist/rfs/shared
     chown system system /mnt/vendor/persist/rfs/shared/server_info.txt
+
+    write /proc/sys/vm/page-cluster 0
 
 on late-fs
     # Boot time FS tune
