@@ -126,9 +126,6 @@ ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 ro.surface_flinger.max_virtual_display_dimension=4096
 ro.surface_flinger.protected_contents=true
 
-# BaikalService 
-baikal.eng.perf=1
-baikal.eng.therm=1
 
 # Set SIM2 default ringtone
 ro.config.ringtone=Ring_Synth_04.ogg,Ring_Synth_04.ogg
@@ -155,3 +152,18 @@ ro.max.fling_velocity=20000
 ro.min.fling_velocity=18000
 
 ro.ril.power_collapse=1
+
+
+# BaikalService 
+baikal.eng.perf=1
+baikal.eng.therm=1
+
+# Baikal Effects
+persist.baikal.ae.disable=0
+persist.baikal.qcae.disable=0
+persist.baikal.dolby.enable=1
+sys.baikal.dolby.avail=1
+sys.baikal.qcae.avail=1
+
+# Baikal Maintainer
+ro.baikalos.maintainer=svasiliev22
