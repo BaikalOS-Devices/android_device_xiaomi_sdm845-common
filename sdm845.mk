@@ -373,3 +373,16 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI \
+    DocumentsUI \
+    Keyguard \
+    TeleService \
+    Telecom \
+    Dialer \
+    Launcher3
+
+
+
