@@ -167,3 +167,7 @@ sys.baikal.qcae.avail=1
 
 # Baikal Maintainer
 ro.baikalos.maintainer=svasiliev22
+
+#Fully optimize on install
+pm.dexopt.install=speed-profile
+
