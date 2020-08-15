@@ -148,3 +148,6 @@ sys.haptic.runin=13
 ro.wlan.chip=39xx
 ro.wlan.mimo=1
 ro.wlan.vendor=qcom
+
+#Vendor
+ro.vendor.qti.va_aosp.support=1
