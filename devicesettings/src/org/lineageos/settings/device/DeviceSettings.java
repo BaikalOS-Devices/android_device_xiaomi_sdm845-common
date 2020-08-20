@@ -56,6 +56,7 @@ public class DeviceSettings extends PreferenceFragment implements
     private static final String KEY_CATEGORY_DISPLAY = "display";
     private static final String KEY_CATEGORY_CAMERA = "camera_pref";
     private static final String KEY_CATEGORY_NVT = "nvt_panel";
+    private static final String KEY_CATEGORY_FTS = "fts_panel";
 
     private static final String SYSTEM_PROPERTY_SND_COMP = "persist.baikal.compander";
     private static final String SYSTEM_PROPERTY_SND_MIC = "persist.baikal.mic_gain";
@@ -64,6 +65,11 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private static final String SYSTEM_PROPERTY_NVT_FW = "persist.baikalos.nvt_fw";
     private static final String SYSTEM_PROPERTY_NVT_ESD = "persist.baikalos.nvt_esd";
+
+    private static final String SYSTEM_PROPERTY_FTS_ESD = "persist.baikalos.fts_esd";
+    private static final String SYSTEM_PROPERTY_FTS_GLOVE = "persist.baikalos.fts_glove";
+    private static final String SYSTEM_PROPERTY_FTS_COVER = "persist.baikalos.fts_cover";
+    private static final String SYSTEM_PROPERTY_FTS_CHARGER = "persist.baikalos.fts_charger";
 
     private static final String KEY_SND_COMP = "snd_comp";    
     private static final String KEY_SND_MIC = "snd_mic";    
@@ -95,14 +101,20 @@ public class DeviceSettings extends PreferenceFragment implements
     private SwitchPreference mNvtFw;
     private SwitchPreference mNvtESD;
 
+    private SwitchPreference mFtsESD;
+    private SwitchPreference mFtsGlove;
+    private SwitchPreference mFtsCover;
+    private SwitchPreference mFtsCharger;
+
     private SwitchPreference mSndComp;
     private SwitchPreference mSndMic;
     private SwitchPreference mSndEarPiece;
     private SwitchPreference mSndHP;
 
     private PreferenceCategory mEqCategory;
-    private PreferenceCategory mNvtCategory;
     private PreferenceCategory mDiracCategory;
+    private PreferenceCategory mNvtCategory;
+    private PreferenceCategory mFtsCategory;
 
 
     private EQSeekBarPreference mEqBand0;
@@ -154,12 +166,19 @@ public class DeviceSettings extends PreferenceFragment implements
 
         mDiracCategory = (PreferenceCategory) findPreference(KEY_DIRAC_CATEGORY);
 
-        if (DiracAudioEnhancerService.du == null ) {
-            mContext.startService(new Intent(mContext, DiracAudioEnhancerService.class));
-            try {
-                Thread.sleep(1000);
-            } catch(Exception etm) {
+        try {
+            if (DiracAudioEnhancerService.du == null ) {
+                mContext.startService(new Intent(mContext, DiracAudioEnhancerService.class));
             }
+
+            for(int i=0;i<5;i++) {
+                if( DiracAudioEnhancerService.du == null || !DiracAudioEnhancerService.du.hasInitialized() ) {
+                    Thread.sleep(250);
+                } else {
+                    break;
+                }
+            }
+        } catch(Exception etm) {
         }
 
         if( DiracAudioEnhancerService.du == null || !DiracAudioEnhancerService.du.hasInitialized() ) {
@@ -411,6 +430,27 @@ public class DeviceSettings extends PreferenceFragment implements
             }
         }
 
+        mFtsCategory = (PreferenceCategory) findPreference(KEY_CATEGORY_FTS);
+
+        if( mFtsCategory != null ) {
+
+            if( !FileUtils.fileExists("/sys/devices/platform/soc/a98000.i2c/i2c-3/3-0038/fts_esd_mode") ) {
+                mFtsCategory.setVisible(false);
+            } else {
+                mFtsESD = (SwitchPreference) findPreference(SYSTEM_PROPERTY_FTS_ESD);
+                mFtsESD.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_FTS_ESD, false));
+                mFtsESD.setOnPreferenceChangeListener(this);
+                mFtsGlove = (SwitchPreference) findPreference(SYSTEM_PROPERTY_FTS_GLOVE);
+                mFtsGlove.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_FTS_GLOVE, false));
+                mFtsGlove.setOnPreferenceChangeListener(this);
+                mFtsCover = (SwitchPreference) findPreference(SYSTEM_PROPERTY_FTS_COVER);
+                mFtsCover.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_FTS_COVER, false));
+                mFtsCover.setOnPreferenceChangeListener(this);
+                mFtsCharger = (SwitchPreference) findPreference(SYSTEM_PROPERTY_FTS_CHARGER);
+                mFtsCharger.setChecked(SystemProperties.getBoolean(SYSTEM_PROPERTY_FTS_CHARGER, false));
+                mFtsCharger.setOnPreferenceChangeListener(this);
+            }
+        }
 
         mSndComp = (SwitchPreference) findPreference(SYSTEM_PROPERTY_SND_COMP);
         if( mSndComp != null ) {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 import org.lineageos.settings.device.DiracAudioEnhancerUtils;
+import android.util.Log;
 
 public class DiracAudioEnhancerService extends Service {
 
@@ -17,15 +18,19 @@ public class DiracAudioEnhancerService extends Service {
 
    @Override
    public int onStartCommand(Intent intent, int flags, int startId) {
+      Log.i("DiracAudioEnhancerService","onStartCommand");
       // Let it continue running until it is stopped.
-      if( du != null ) return START_STICKY;
+      // if( du != null ) return START_STICKY;
       try {
         du = new DiracAudioEnhancerUtils();
+        Log.i("DiracAudioEnhancerService","initialize");
         du.initialize();
       } catch(Exception e) {
+        Log.e("DiracAudioEnhancerService","Exception:",e);
         du = null;
       }
       //Toast.makeText(this, "Audio Enhancer Started", Toast.LENGTH_LONG).show();
+      Log.i("DiracAudioEnhancerService","START_STICKY");
       return START_STICKY;
    }
 
@@ -33,6 +38,7 @@ public class DiracAudioEnhancerService extends Service {
    @Override
    public void onDestroy() {
       super.onDestroy();
-      Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
+      Log.i("DiracAudioEnhancerService","onDestroy");
+      //Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
    }
 }

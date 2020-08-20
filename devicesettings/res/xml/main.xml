@@ -52,6 +52,36 @@
 
         </PreferenceCategory>
 
+        <PreferenceCategory
+            android:key="fts_panel"
+            android:title="@string/fts_panel_title">
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_esd"
+        	    android:title="@string/fts_esd_title"
+        	    android:summary="@string/fts_esd_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_glove"
+        	    android:title="@string/fts_glove_title"
+        	    android:summary="@string/fts_glove_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_cover"
+        	    android:title="@string/fts_cover_title"
+        	    android:summary="@string/fts_cover_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_charger"
+        	    android:title="@string/fts_charger_title"
+        	    android:summary="@string/fts_charger_summary"
+        	    android:persistent="false" />
+
+        </PreferenceCategory>
+
     </PreferenceCategory>
 
     <PreferenceCategory

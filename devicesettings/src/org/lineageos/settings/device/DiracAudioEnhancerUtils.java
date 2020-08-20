@@ -43,7 +43,7 @@ public class DiracAudioEnhancerUtils
 
   public boolean isEnabled(Context paramContext)
   {
-    int i =1;
+    int i = 1;
     int j = 0;
     try {
         j = mAudEnhncr.getMusic();

@@ -4,7 +4,7 @@
     android:versionCode="3"
     android:versionName="3.0"
     android:persistent="true"
-    android:sharedUserId="android.uid.system" >
+    android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.DEVICE_POWER" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -20,6 +20,7 @@
     <application
         android:label="@string/advanced_settings"
         android:theme="@style/AppTheme"
+        android:persistent="true"
         android:supportsRtl="true" >
         <activity
             android:name=".DeviceSettingsActivity"

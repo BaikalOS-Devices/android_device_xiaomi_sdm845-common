@@ -80,6 +80,20 @@
     <string name="nvt_esd_title">ESD protection</string>
     <string name="nvt_esd_summary">Enable ESD protection feature</string>
 
+    <string name="fts_panel_title">Focaltech Panel</string>
+
+    <string name="fts_esd_title">ESD protection</string>
+    <string name="fts_esd_summary">Enable ESD protection feature</string>
+
+    <string name="fts_glove_title">Glove</string>
+    <string name="fts_glove_summary">Enable Glove feature</string>
+
+    <string name="fts_cover_title">Cover</string>
+    <string name="fts_cover_summary">Enable cover feature</string>
+
+    <string name="fts_charger_title">Charger</string>
+    <string name="fts_charger_summary">Enable charger feature</string>
+
     <string name="snd_compander_title">Disable Compander</string>
     <string name="snd_compander_summary">Disable Compander for wired headphones for better sound quality</string>
     <string name="snd_headphone_title">Headphone Gain</string>
