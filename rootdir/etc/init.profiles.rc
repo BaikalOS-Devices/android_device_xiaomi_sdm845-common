@@ -63,7 +63,7 @@ on property:baikal.perf.profile=idle
     setprop "baikal.eng.perf.profile" "temporary"
     setprop "baikal.eng.perf.profile" ${baikal.eng.perf.idle:-"battery"}
 
-on property:baikal.eng.perf.profile=boost
+on property:baikal.perf.profile=boost
     setprop "baikal.eng.perf.profile" "temporary"
     setprop "baikal.eng.perf.profile" "balance"
 
