@@ -103,10 +103,10 @@ on property:baikal.eng.perf.profile=balance
 
     write /dev/cpuset/top-app/cpus "0-7"
     write /dev/cpuset/audio-app/cpus "2-5"
-    write /dev/cpuset/foreground/cpus "0-3"
+    write /dev/cpuset/foreground/cpus "0-5"
     write /dev/cpuset/boost/cpus "2-5"
     write /dev/cpuset/background/cpus "0-3"
-    write /dev/cpuset/system-background/cpus "0-3"
+    write /dev/cpuset/system-background/cpus "0-4"
 
 
 # Performance (based on DrunkSauce Lite)
@@ -318,10 +318,10 @@ on property:baikal.eng.perf.profile=battery
 
     write /dev/cpuset/top-app/cpus "0-1,4-5"
     write /dev/cpuset/audio-app/cpus "1,5"
-    write /dev/cpuset/foreground/cpus "0-1"
+    write /dev/cpuset/foreground/cpus "0-1,4"
     write /dev/cpuset/boost/cpus "1,5"
     write /dev/cpuset/background/cpus "0-1"
-    write /dev/cpuset/system-background/cpus "0-1"
+    write /dev/cpuset/system-background/cpus "0-1,4"
 
 
 # Gaming
