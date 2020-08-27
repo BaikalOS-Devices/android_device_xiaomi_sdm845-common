@@ -15,6 +15,10 @@ on property:baikal.perf.profile=balance
     setprop "baikal.eng.perf.profile" "temporary"
     setprop "baikal.eng.perf.profile" "balance"
 
+on property:baikal.perf.profile=limited
+    setprop "baikal.eng.perf.profile" "temporary"
+    setprop "baikal.eng.perf.profile" "limited"
+
 on property:baikal.perf.profile=video
     setprop "baikal.eng.perf.profile" "temporary"
     setprop "baikal.eng.perf.profile" "video"
