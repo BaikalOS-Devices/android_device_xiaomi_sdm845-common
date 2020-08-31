@@ -482,10 +482,10 @@ on property:baikal.eng.perf.profile=gaming
     write /sys/module/cpu_boost/parameters/input_boost_ms 2000
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 25
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 710000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
     write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "N"
+    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
 
     write /sys/class/devfreq/soc:qcom,cpubw/min_freq 14236
     write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
