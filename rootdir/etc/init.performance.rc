@@ -1,5 +1,50 @@
+on boot
+    setprop "baikal.def.balance.csmin" "300000"
+    setprop "baikal.def.balance.csmax" "1766400"
+    setprop "baikal.def.balance.cgmin" "825600"
+    setprop "baikal.def.balance.cgmax" "2803200"
+    setprop "baikal.def.balance.gmin" "180"
+    setprop "baikal.def.balance.gmax" "710"
+    setprop "baikal.def.balance.cc" "1"
+
+    setprop "baikal.def.limited.csmin" "300000"
+    setprop "baikal.def.limited.csmax" "1324800"
+    setprop "baikal.def.limited.cgmin" "825600"
+    setprop "baikal.def.limited.cgmax" "1843200"
+    setprop "baikal.def.limited.gmin" "180"
+    setprop "baikal.def.limited.gmax" "710"
+    setprop "baikal.def.limited.cc" "1"
+
+    setprop "baikal.def.performance.csmin" "902400"
+    setprop "baikal.def.performance.csmax" "1766400"
+    setprop "baikal.def.performance.cgmin" "1286400"
+    setprop "baikal.def.performance.cgmax" "2803200"
+    setprop "baikal.def.performance.gmin" "180"
+    setprop "baikal.def.performance.gmax" "710"
+    setprop "baikal.def.performance.cc" "4"
+
+    setprop "baikal.def.battery.csmin" "300000"
+    setprop "baikal.def.battery.csmax" "1056000"
+    setprop "baikal.def.battery.cgmin" "825600"
+    setprop "baikal.def.battery.cgmax" "1228800"
+    setprop "baikal.def.battery.gmin" "180"
+    setprop "baikal.def.battery.gmax" "180"
+    setprop "baikal.def.battery.cc" "1"
+
+    setprop "baikal.def.gaming.csmin" "1228800"
+    setprop "baikal.def.gaming.csmax" "1766400"
+    setprop "baikal.def.gaming.cgmin" "1536000"
+    setprop "baikal.def.gaming.cgmax" "2803200"
+    setprop "baikal.def.gaming.gmin" "180"
+    setprop "baikal.def.gaming.gmax" "710"
+    setprop "baikal.def.gaming.cc" "4"
+
+    setprop "baikal.def.cc_off" "4"
+    setprop "baikal.def.cc_on" "1"
+
 # Balance (default profile)
 on property:baikal.eng.perf.profile=balance
+    setprop "baikal.eng.perf.cur_profile" "balance"
 
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
@@ -13,11 +58,10 @@ on property:baikal.eng.perf.profile=balance
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
-    setprop "baikal.eng.perf.cur_profile" "balance"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ${persist.bkp.balance.csmax:-1766400}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq ${persist.bkp.balance.cgmax:-2803200}
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq ${persist.bkp.balance.csmin:-300000}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq ${persist.bkp.balance.cgmin:-825600}
 
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 1228800
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1536000
@@ -46,17 +90,15 @@ on property:baikal.eng.perf.profile=balance
     #write /proc/sys/kernel/sched_downmigrate 60
     #write /proc/sys/kernel/sched_upmigrate 80
 
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus ${persist.bkp.balance.cc:-1}
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus ${persist.bkp.balance.cc:-1}
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 300
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 5
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/min_clock_mhz" ${persist.bkp.balance.gmin:-180}
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz" ${persist.bkp.balance.gmax:-710}
 
     write /sys/class/devfreq/soc:qcom,cpubw/min_freq 2288
     write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
@@ -110,6 +152,7 @@ on property:baikal.eng.perf.profile=balance
 
 # Limited
 on property:baikal.eng.perf.profile=limited
+    setprop "baikal.eng.perf.cur_profile" "limited"
 
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
@@ -123,11 +166,10 @@ on property:baikal.eng.perf.profile=limited
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
-    setprop "baikal.eng.perf.cur_profile" "limited"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1324800
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1843200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ${persist.bkp.limited.csmax:-1324800}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq ${persist.bkp.limited.cgmax:-1843200}
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq ${persist.bkp.limited.csmin:-300000}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq ${persist.bkp.limited.cgmin:-825600}
 
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 1056000
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1286400
@@ -156,17 +198,15 @@ on property:baikal.eng.perf.profile=limited
     #write /proc/sys/kernel/sched_downmigrate 60
     #write /proc/sys/kernel/sched_upmigrate 80
 
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus ${persist.bkp.limited.cc:-1}
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus ${persist.bkp.limited.cc:-1}
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 300
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 5
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/min_clock_mhz" ${persist.bkp.limited.gmin:-180}
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz" ${persist.bkp.limited.gmax:-710}
 
     write /sys/class/devfreq/soc:qcom,cpubw/min_freq 2288
     write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
@@ -235,10 +275,10 @@ on property:baikal.eng.perf.profile=performance
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 902400
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1286400
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ${persist.bkp.performance.csmax:-1766400}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq ${persist.bkp.performance.cgmax:-2803200}
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq ${persist.bkp.performance.csmin:-902400}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq ${persist.bkp.performance.cgmin:-1286400}
 
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 2803200
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1766400
@@ -260,17 +300,15 @@ on property:baikal.eng.perf.profile=performance
     #write /proc/sys/kernel/sched_downmigrate 40
     #write /proc/sys/kernel/sched_upmigrate 50
 
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus ${persist.bkp.performance.cc:-4}
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus ${persist.bkp.performance.cc:-4}
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 500
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 10
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/min_clock_mhz" ${persist.bkp.performance.gmin:-180}
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz" ${persist.bkp.performance.gmax:-710}
 
     write /sys/class/devfreq/soc:qcom,cpubw/min_freq 8132
     write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
@@ -339,10 +377,10 @@ on property:baikal.eng.perf.profile=battery
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1228800
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1056000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 825600
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ${persist.bkp.battery.csmax:-1228800}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq ${persist.bkp.battery.cgmax:-1056000}
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq ${persist.bkp.battery.csmin:-300000}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq ${persist.bkp.battery.cgmin:-825600}
 
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 902400
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1056000
@@ -371,17 +409,15 @@ on property:baikal.eng.perf.profile=battery
     #write /proc/sys/kernel/sched_downmigrate 90
     #write /proc/sys/kernel/sched_upmigrate 95
 
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus ${persist.bkp.battery.cc:-1}
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus ${persist.bkp.battery.cc:-1}
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 30
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 0
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 257000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/min_clock_mhz" ${persist.bkp.battery.gmin:-180}
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz" ${persist.bkp.battery.gmax:-710}
 
     write /sys/class/devfreq/soc:qcom,cpubw/min_freq 2288
     write /sys/class/devfreq/soc:qcom,cpubw/max_freq 8132
@@ -450,10 +486,10 @@ on property:baikal.eng.perf.profile=gaming
     write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
     write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1766400
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 2803200
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1228800
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 1536000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq ${persist.bkp.gaming.csmax:-1766400}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq ${persist.bkp.gaming.cgmax:-2803200}
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq ${persist.bkp.gaming.csmin:-1228800}
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq ${persist.bkp.gaming.cgmin:-1536000}
 
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_hp 2803200
     write /sys/module/cpu_input_boost/parameters/input_boost_freq_lp 1766400
@@ -475,17 +511,15 @@ on property:baikal.eng.perf.profile=gaming
     #write /proc/sys/kernel/sched_downmigrate 40
     #write /proc/sys/kernel/sched_upmigrate 50
 
-    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 4
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus ${persist.bkp.gaming.cc:-4}
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus ${persist.bkp.gaming.cc:-4}
 
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:0 1:0 2:0 3:0 4:0 5:0 6:0 7:0"
     write /sys/module/cpu_boost/parameters/input_boost_ms 2000
     write /sys/module/cpu_boost/parameters/dynamic_stune_boost 25
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 257000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 710000000
-    write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
-    write /sys/module/adreno_idler/parameters/adreno_idler_active "Y"
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/min_clock_mhz" ${persist.bkp.gaming.gmin:-180}
+    write "/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_clock_mhz" ${persist.bkp.gaming.gmax:-710}
 
     write /sys/class/devfreq/soc:qcom,cpubw/min_freq 14236
     write /sys/class/devfreq/soc:qcom,cpubw/max_freq 14236
