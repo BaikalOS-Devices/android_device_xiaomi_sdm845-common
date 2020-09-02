@@ -160,6 +160,7 @@ ro.ril.power_collapse=1
 # BaikalService 
 baikal.eng.perf=1
 baikal.eng.therm=1
+baikal.eng.perf.edit=1
 
 # Baikal Effects
 persist.baikal.ae.disable=0
@@ -174,3 +175,4 @@ ro.baikalos.maintainer=svasiliev22
 #Fully optimize on install
 pm.dexopt.install=speed-profile
 
+ro.control_privapp_permissions=log
