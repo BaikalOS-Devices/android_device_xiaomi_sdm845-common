@@ -31,6 +31,10 @@ on property:baikal.perf.profile=gaming
     setprop "baikal.eng.perf.profile" "temporary"
     setprop "baikal.eng.perf.profile" "gaming"
 
+on property:baikal.perf.profile=gaming2
+    setprop "baikal.eng.perf.profile" "temporary"
+    setprop "baikal.eng.perf.profile" "gaming2"
+
 on property:baikal.perf.profile=battery
     setprop "baikal.eng.perf.profile" "temporary"
     setprop "baikal.eng.perf.profile" "battery"

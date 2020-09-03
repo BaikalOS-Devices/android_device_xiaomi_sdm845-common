@@ -7,6 +7,7 @@
     	<item>@string/performance_limited</item>
     	<item>@string/performance_performance</item>
     	<item>@string/performance_gaming</item>
+    	<item>@string/performance_gaming2</item>
     	<item>@string/performance_battery</item>
      </string-array>
      <string-array name="default_performance_listvalues">
@@ -14,6 +15,7 @@
     	<item>limited</item>
     	<item>performance</item>
     	<item>gaming</item>
+    	<item>gaming2</item>
     	<item>battery</item>
     </string-array>
 
