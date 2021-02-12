@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2014-2016 The OmniROM Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="display"
+        android:title="@string/display_title">
+        <!-- Preference
+                 android:key="xiaomi_display"
+                 android:fragment="org.lineageos.settings.device.XiaomiDisplay"
+                 android:summary="@string/xiaomi_display_summary"
+                 android:title="@string/xiaomi_display_title" / -->
+        <Preference
+            android:key="device_doze"
+            android:persistent="false"
+            android:title="@string/device_doze_title" >
+            <intent android:action="android.intent.action.MAIN"
+                 android:targetPackage="org.lineageos.settings.doze"
+                 android:targetClass="org.lineageos.settings.doze.DozeSettingsActivity"/>
+        </Preference>
+
+        <PreferenceCategory
+            android:key="nvt_panel"
+            android:title="@string/nvt_panel_title">
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.nvt_fw"
+        	    android:title="@string/nvt_fw_title"
+        	    android:summary="@string/nvt_fw_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.nvt_esd"
+        	    android:title="@string/nvt_esd_title"
+        	    android:summary="@string/nvt_esd_summary"
+        	    android:persistent="false" />
+
+        </PreferenceCategory>
+
+        <PreferenceCategory
+            android:key="fts_panel"
+            android:title="@string/fts_panel_title">
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_esd"
+        	    android:title="@string/fts_esd_title"
+        	    android:summary="@string/fts_esd_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_glove"
+        	    android:title="@string/fts_glove_title"
+        	    android:summary="@string/fts_glove_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_cover"
+        	    android:title="@string/fts_cover_title"
+        	    android:summary="@string/fts_cover_summary"
+        	    android:persistent="false" />
+
+        	<SwitchPreference
+        	    android:key="persist.baikalos.fts_charger"
+        	    android:title="@string/fts_charger_title"
+        	    android:summary="@string/fts_charger_summary"
+        	    android:persistent="false" />
+
+        </PreferenceCategory>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="dirac_settings"
+        android:title="@string/dirac_settings" >
+
+    	<SwitchPreference
+    	    android:key="dirac_enhancer"
+    	    android:title="@string/dirac_enhancer"
+    	    android:persistent="false" />
+
+        <ListPreference
+    	    android:key="dirac_headsets"
+    	    android:title="@string/dirac_headsets"
+    	    android:entries="@array/listentries"
+    	    android:entryValues="@array/listvalues" 
+            android:summary="%s"/>
+
+        <ListPreference
+            android:key="dirac_preset"
+            android:entries="@array/dirac_preset_entries"
+            android:entryValues="@array/dirac_preset_values"
+            android:defaultValue="0,0,0,0,0,0,0"
+            android:title="@string/dirac_preset_title"
+            android:summary="%s" />
+
+    	<!-- SwitchPreference
+    	    android:key="dirac_mode"
+    	    android:title="@string/dirac_mode"
+    	    android:persistent="false" / -->
+
+    	<!-- SwitchPreference
+    	    android:key="dirac_command"
+    	    android:title="@string/dirac_command"
+    	    android:persistent="false" / -->
+
+        <PreferenceCategory
+            android:key="dirac_eq_settings"
+            android:title="@string/dirac_eq_settings">
+        
+
+            <org.lineageos.settings.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_0"
+                android:title="@string/dirac_eq_band_0"        
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.lineageos.settings.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_1"
+                android:title="@string/dirac_eq_band_1"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.lineageos.settings.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_2"
+                android:title="@string/dirac_eq_band_2"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.lineageos.settings.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_3"
+                android:title="@string/dirac_eq_band_3"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.lineageos.settings.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_4"
+                android:title="@string/dirac_eq_band_4"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.lineageos.settings.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_5"
+                android:title="@string/dirac_eq_band_5"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+            <org.lineageos.settings.device.utils.EQSeekBarPreference
+                android:key="dirac_eq_band_6"
+                android:title="@string/dirac_eq_band_6"
+                android:layout="@layout/eq_slider_preference"
+                app:max_value="12"
+                app:min_value="-12"
+                app:default_value="0"/>
+
+        </PreferenceCategory>
+        <!-- ListPreference
+    	    android:key="dirac_mode"
+    	    android:title="@string/dirac_mode"
+    	    android:entries="@array/dirac_mode_entries"
+    	    android:entryValues="@array/dirac_mode_values"/ -->
+
+    </PreferenceCategory>
+
+
+    <!-- PreferenceCategory
+        android:key="sound_settings"
+        android:title="@string/sound_settings" >
+
+
+    	<SwitchPreference
+    	    android:key="persist.baikal.compander"
+    	    android:title="@string/snd_compander_title"
+    	    android:summary="@string/snd_compander_summary"
+    	    android:persistent="false" />
+    	<SwitchPreference
+    	    android:key="persist.baikal.headphone_gain"
+    	    android:title="@string/snd_headphone_title"
+    	    android:summary="@string/snd_headphone_summary"
+    	    android:persistent="false" />
+    	<SwitchPreference
+    	    android:key="persist.baikal.earpiece_gain"
+    	    android:title="@string/snd_earpiece_title"
+    	    android:summary="@string/snd_earpiece_summary"
+    	    android:persistent="false" />
+    	<SwitchPreference
+    	    android:key="persist.baikal.mic_gain"
+    	    android:title="@string/snd_mic_title"
+    	    android:summary="@string/snd_mic_summary"
+    	    android:persistent="false" />
+
+
+    </PreferenceCategory -->
+
+</PreferenceScreen>

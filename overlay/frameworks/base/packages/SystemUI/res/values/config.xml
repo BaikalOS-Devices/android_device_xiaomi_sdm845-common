@@ -21,6 +21,52 @@
      for different hardware and product builds. -->
 <resources>
     <!-- Doze: does this device support STATE_DOZE?  -->
-    <bool name="doze_display_state_supported">true</bool>
+    <bool name="doze_display_state_supported">false</bool>
+
+
+    <!-- Whether or not the notifications should always fade as they are dismissed. -->
+    <bool name="config_fadeNotificationsOnDismiss">true</bool>
+
+    <!-- Whether or not the fade on the notification is based on the amount that it has been swiped
+         off-screen. -->
+    <bool name="config_fadeDependingOnAmountSwiped">true</bool>
+
+    <!-- Whether or not the notification contents should be clipped to any background that is
+         set on the notification container. For example, if this value is true and the background
+         has rounded corners, then the contents will be clipped to those corners. -->
+    <bool name="config_clipNotificationsToOutline">true</bool>
+
+    <!-- FPSInfoService FPS node file path -->
+    <string name="config_fpsInfoSysNode" translatable="false">/sys/class/drm/sde-crtc-0/measured_fps</string>
+
+    <!-- The CPU temperature sensor path, defaults to empty -->
+    <string name="config_cpuTempSensor" translatable="false">/sys/devices/virtual/thermal/thermal_zone10/temp</string>
+
+    <!-- The CPU temperature sensor path, defaults to empty -->
+    <string name="config_cpuTempSensorPrefix" translatable="false">/sys/devices/virtual/thermal/thermal_zone</string>
+
+    <!-- The CPU temperature sensor path, defaults to empty -->
+    <string name="config_cpuTempSensorSuffix" translatable="false">/temp</string>
+
+    <!-- The CPU temperature sensor path, defaults to empty -->
+    <string name="config_cpuTempSensorNumber" translatable="false">1,2,3,4,7,8,9,10</string>
+
+    <!-- The CPU temperature divider, if needed -->
+    <integer name="config_cpuTempDivider" translatable="false">1000</integer>
+
+    <!-- The CPU temperature divider, if needed -->
+    <integer name="config_sysTempDivider" translatable="false">1000</integer>
+
+    <!-- The CPU temperature divider, if needed -->
+    <integer name="config_batTempDivider" translatable="false">1000</integer>
+
+    <!-- The SYS temperature sensor path, defaults to empty -->
+    <string name="config_sysTempSensor" translatable="false">/sys/devices/virtual/thermal/thermal_zone65/temp</string>
+
+    <!-- The BAT temperature sensor path, defaults to empty -->
+    <string name="config_batTempSensor" translatable="false">/sys/devices/virtual/thermal/thermal_zone71/temp</string>
+
+    <string name="config_gpuFreqSensor" translatable="false">/sys/devices/platform/soc/5000000.qcom,kgsl-3d0/kgsl/kgsl-3d0/clock_mhz</string>
+
 </resources>
 

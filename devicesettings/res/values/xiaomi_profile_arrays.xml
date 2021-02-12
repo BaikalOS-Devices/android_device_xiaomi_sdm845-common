@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="xiaomi_display_listentries">
+    	<item>@string/xiaomi_display_auto</item>
+    	<item>@string/xiaomi_display_standard</item>
+    	<item>@string/xiaomi_display_enhance</item>
+     </string-array>
+
+     <string-array name="xiaomi_display_listvalues">
+    	<item>ADAPT 0</item>
+    	<item>STANDARD 1</item>
+    	<item>ENHANCE 1</item>
+    </string-array>
+
+    <string-array name="xiaomi_display_adapt_listentries">
+    	<item>@string/xiaomi_display_adapt_standard</item>
+    	<item>@string/xiaomi_display_adapt_warm</item>
+    	<item>@string/xiaomi_display_adapt_cool</item>
+    	<item>@string/xiaomi_display_adapt_auto</item>
+     </string-array>
+
+     <string-array name="xiaomi_display_adapt_listvalues">
+    	<item>ADAPT 0</item>
+    	<item>ADAPT 1</item>
+    	<item>ADAPT 2</item>
+    	<item>ADAPT 3</item>
+    </string-array>
+
+</resources>

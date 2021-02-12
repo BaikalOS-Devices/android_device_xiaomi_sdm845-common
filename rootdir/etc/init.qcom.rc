@@ -30,6 +30,7 @@
 import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
+import /vendor/etc/init/hw/init.custom.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -690,7 +691,8 @@ service spdaemon /vendor/bin/spdaemon
     user system
     group system
 
-service thermal-engine /system/vendor/bin/thermal-engine
+#service thermal-engine /system/vendor/bin/thermal-engine
+service vendor.thermal-engine /vendor/bin/thermal-engine -c ${sys.qcom.thermalcfg:-/vendor/etc/thermal-engine-sdm845.conf}
     class main
     user root
     socket thermal-send-client stream 0666 system system

@@ -1,0 +1,9 @@
+import /vendor/etc/init/hw/init.profiles.rc
+import /vendor/etc/init/hw/init.performance.rc
+import /vendor/etc/init/hw/init.thermal.rc
+
+on property:persist.baikal.dolby.enable=1
+    enable dms-hal-1-0
+
+on property:persist.baikal.dolby.enable=0
+    stop dms-hal-1-0
