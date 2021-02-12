@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018-2020 The LineageOS Project
+# Copyright (C) 2018-2020 The baikalosOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -105,18 +105,19 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth.audio@2.0-impl:32 \
+    android.hardware.bluetooth.audio@2.0-impl \
     audio.bluetooth.default \
     libbthost_if \
     vendor.qti.hardware.bluetooth_audio@2.0.vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor
+
 
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl:32 \
     android.hardware.camera.provider@2.4-service \
     libdng_sdk.vendor \
-    Snap \
+    CameraGo \
     vendor.qti.hardware.camera.device@1.0.vendor
 
 # Common init scripts
@@ -130,6 +131,10 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
+    init.custom.rc \
+    init.profiles.rc \
+    init.performance.rc \
+    init.thermal.rc \
     ueventd.qcom.rc
 
 # Context Hub
@@ -139,7 +144,8 @@ PRODUCT_PACKAGES += \
 
 # Device-specific settings
 PRODUCT_PACKAGES += \
-    XiaomiParts
+    Doze \
+    DeviceSettings
 
 # Display
 PRODUCT_PACKAGES += \
@@ -156,6 +162,12 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.0.vendor \
     vendor.display.config@2.0 \
     vendor.qti.hardware.display.allocator@1.0-service
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_wide_color_display=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.has_HDR_display=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.use_color_management=true
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.wcg_composition_dataspace=143261696
+
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -288,7 +300,10 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    hardware/xiaomi
+    kernel/xiaomi/sdm845 \
+    vendor/qcom/opensource/commonsys/packages/apps/Bluetooth \
+    vendor/qcom/opensource/commonsys/system/bt/conf \
+
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -354,3 +369,12 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI \
+    DocumentsUI \
+    Keyguard \
+    TeleService \
+    Telecom \
+    Dialer \
+    Launcher3
