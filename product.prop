@@ -18,9 +18,10 @@ baikal.eng.perf.edit=1
 # Baikal Effects
 persist.baikal.ae.disable=0
 persist.baikal.qcae.disable=0
-persist.baikal.dolby.enable=1
-sys.baikal.dolby.avail=1
+persist.baikal.dolby.enable=0
+sys.baikal.dolby.avail=0
 sys.baikal.qcae.avail=1
+sys.baikal.var_fps=0
 
 # Baikal Maintainer
 ro.baikalos.maintainer=svasiliev22
